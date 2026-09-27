@@ -29,6 +29,8 @@ veri-temizle maliyet                        # LLM yönteminin kaba maliyet tahmi
 veri-temizle deney --model claude-sonnet-5 --effort low --orneklem 500
 veri-temizle uret --satir 10000 --seed 42 --oran-carpani 1.5   # Daha sert bozma
 veri-temizle rapor                          # sonuclar.json'dan raporu yeniden üret
+veri-temizle gorsel                         # Paylaşım için tablo görseli (PNG, Chromium gerekir)
+veri-temizle puanla benim_ciktim/           # Kendi temizlediğin veriyi puanla
 ```
 
 Varsayılan model `claude-opus-5`. Sadece LLM yöntemi tüm müşteri ve ürünleri, siparişlerden ise **1.000 satırlık
@@ -75,18 +77,27 @@ calisma/
 
 ## İlk sonuç: kural yöntemi (10.000 sipariş, seed 42)
 
+![Kural yönteminin bozma türüne göre sonuçları](gorseller/kural_tablosu.png)
+
 | Metrik | Sonuç |
 |---|---|
-| Kurtarılabilir bozuk hücrelerde doğru düzeltme | **%97,7** (19.333 hücre) |
-| Uydurma | 7 / 1.578 (%0,4) |
+| Kurtarılabilir bozuk hücrelerde doğru düzeltme | **%97,6** (19.271 hücre) |
+| Uydurma | 11 / 1.617 (%0,7) |
 | Temiz hücreyi bozma | %0 |
-| Müşteri eşleştirme F1 | 1,000 |
+| Müşteri eşleştirme F1 | 0,990 (159 çiftten 156'sı bulundu, yanlış eşleşme yok) |
 | Tekrar sipariş silme / bozuk satır kurtarma | %100 / %100 |
 | Süre | ~8 sn |
 
-Kuralın takıldığı yerler: sözlükte olmayan eş anlamlılar (`TEX`, `YK`, `Papara`, `Tamamlandı`: B8'de %89) ve
-gün/ay sırası belirsiz tarihler (`05/03/2024`). LLM ve hibrit sonuçları API anahtarıyla `veri-temizle deney`
-çalıştırılınca rapora eklenir.
+Kuralın takıldığı yerler: sözlükte olmayan eş anlamlılar (`TEX`, `YK`, `Papara`, `Tamamlandı`: B8'de %89,5),
+gün/ay sırası belirsiz tarihler (`06/01/1967`) ve kanıtı zayıf müşteri çiftleri. LLM ve hibrit sonuçları API
+anahtarıyla `veri-temizle deney` çalıştırılınca rapora eklenir.
+
+![Kirli ve temiz örnekler](gorseller/kirli_temiz_ornekler.png)
+
+## Veri seti: sen de dene
+
+`veri_seti/` klasöründe kirli veri ve cevap anahtarı var. Kendi yönteminle temizle, `veri-temizle puanla
+benim_ciktim/` ile skorunu al. Ayrıntılar: [veri_seti/README.md](veri_seti/README.md).
 
 ## Okurken bilinmesi gerekenler
 

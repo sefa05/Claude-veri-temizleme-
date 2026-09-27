@@ -7,30 +7,30 @@
   },
   "yontemler": {
     "kural": {
-      "sure": 7.76187808099985,
+      "sure": 8.093484771000021,
       "istatistik": {
-        "onarilan_satir": 132,
+        "onarilan_satir": 133,
         "musteriler.ham_satir": 2639,
         "urunler.ham_satir": 300,
-        "siparisler.ham_satir": 10260,
-        "urunler.duzeltildi": 41,
-        "urunler.turetildi": 15,
-        "musteriler.duzeltildi": 1744,
-        "musteriler.varsayilan": 93,
-        "musteriler.gecersiz": 25,
-        "siparisler.duzeltildi": 7597,
-        "siparisler.gecersiz": 154,
-        "belirsiz_hucre": 446,
-        "musteriler.belirsiz_bosaltildi": 11,
-        "siparisler.belirsiz_bosaltildi": 407,
-        "siparisler.belirsiz_varsayilan": 28,
-        "siparisler.turetildi": 509,
-        "siparisler.yeniden_hesaplandi": 394,
-        "siparisler.bosaltildi": 9,
-        "musteriler.turetildi": 128,
-        "belirsiz_cift": 3,
-        "birlesen_musteri": 139,
-        "silinen_tekrar_siparis": 260
+        "siparisler.ham_satir": 10258,
+        "urunler.turetildi": 23,
+        "urunler.duzeltildi": 38,
+        "musteriler.duzeltildi": 1749,
+        "musteriler.varsayilan": 112,
+        "musteriler.gecersiz": 26,
+        "siparisler.duzeltildi": 7535,
+        "siparisler.gecersiz": 141,
+        "belirsiz_hucre": 413,
+        "musteriler.belirsiz_bosaltildi": 7,
+        "siparisler.belirsiz_bosaltildi": 393,
+        "siparisler.belirsiz_varsayilan": 13,
+        "siparisler.turetildi": 514,
+        "siparisler.yeniden_hesaplandi": 398,
+        "siparisler.bosaltildi": 8,
+        "musteriler.turetildi": 122,
+        "belirsiz_cift": 4,
+        "birlesen_musteri": 136,
+        "silinen_tekrar_siparis": 258
       },
       "llm": null,
       "orneklem": {
@@ -54,23 +54,23 @@
             "fazla_satir": null
           }
         },
-        "genel_dogruluk": 0.9813282410354339,
+        "genel_dogruluk": 0.9808253438932889,
         "kurtarilabilir": {
-          "n": 4713,
-          "dogru": 0.9813282410354339,
-          "bos": 0.01103331211542542,
-          "yanlis": 0.0076384468491406746,
+          "n": 4798,
+          "dogru": 0.9808253438932889,
+          "bos": 0.006669445602334306,
+          "yanlis": 0.012505210504376824,
           "satir_yok": 0.0
         },
         "kurtarilamaz": {
-          "n": 321,
-          "dogru": 0.04984423676012461,
-          "bos": 0.9501557632398754,
+          "n": 327,
+          "dogru": 0.03058103975535168,
+          "bos": 0.9694189602446484,
           "yanlis": 0.0,
           "satir_yok": 0.0
         },
         "temiz_hucreler": {
-          "n": 29666,
+          "n": 29575,
           "dogru": 1.0,
           "bos": 0.0,
           "yanlis": 0.0,
@@ -78,96 +78,96 @@
         },
         "uydurma": {
           "n": 0,
-          "payda": 375,
+          "payda": 378,
           "oran": 0.0
         },
         "bozma_turu": {
           "B1": {
             "n": 14,
-            "dogru": 1.0,
+            "dogru": 0.9285714285714286,
             "bos": 0.0,
-            "yanlis": 0.0,
+            "yanlis": 0.07142857142857142,
             "satir_yok": 0.0
           },
           "B10": {
-            "n": 138,
+            "n": 140,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B11": {
-            "n": 265,
+            "n": 278,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B12": {
-            "n": 23,
+            "n": 29,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B13": {
-            "n": 46,
+            "n": 53,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B15": {
-            "n": 63,
+            "n": 66,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B3": {
-            "n": 1401,
-            "dogru": 0.974304068522484,
+            "n": 1425,
+            "dogru": 0.96,
             "bos": 0.0,
-            "yanlis": 0.02569593147751606,
+            "yanlis": 0.04,
             "satir_yok": 0.0
           },
           "B4": {
-            "n": 157,
-            "dogru": 0.9936305732484076,
-            "bos": 0.006369426751592357,
+            "n": 169,
+            "dogru": 0.9881656804733728,
+            "bos": 0.011834319526627219,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B5": {
-            "n": 179,
+            "n": 188,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B6": {
-            "n": 662,
-            "dogru": 1.0,
+            "n": 665,
+            "dogru": 0.9969924812030075,
             "bos": 0.0,
-            "yanlis": 0.0,
+            "yanlis": 0.0030075187969924814,
             "satir_yok": 0.0
           },
           "B7": {
-            "n": 18,
+            "n": 21,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B8": {
-            "n": 1134,
-            "dogru": 0.955026455026455,
-            "bos": 0.04497354497354497,
+            "n": 1132,
+            "dogru": 0.9734982332155477,
+            "bos": 0.026501766784452298,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B9": {
-            "n": 613,
+            "n": 618,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
@@ -176,16 +176,16 @@
         },
         "bozma_turu_kurtarilamaz": {
           "B5": {
-            "n": 277,
-            "dogru": 0.04332129963898917,
-            "bos": 0.9566787003610109,
+            "n": 287,
+            "dogru": 0.0313588850174216,
+            "bos": 0.9686411149825784,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B7": {
-            "n": 44,
-            "dogru": 0.09090909090909091,
-            "bos": 0.9090909090909091,
+            "n": 40,
+            "dogru": 0.025,
+            "bos": 0.975,
             "yanlis": 0.0,
             "satir_yok": 0.0
           }
@@ -207,37 +207,37 @@
           },
           "musteriler.dogum_tarihi": {
             "n": 2500,
-            "dogru": 0.9672,
-            "bos": 0.0248,
-            "yanlis": 0.008,
+            "dogru": 0.9648,
+            "bos": 0.0244,
+            "yanlis": 0.0108,
             "satir_yok": 0.0
           },
           "musteriler.eposta": {
             "n": 2500,
-            "dogru": 0.9836,
-            "bos": 0.0164,
+            "dogru": 0.9828,
+            "bos": 0.0172,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "musteriler.il": {
             "n": 2500,
-            "dogru": 0.9996,
-            "bos": 0.0004,
+            "dogru": 1.0,
+            "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "musteriler.ilce": {
             "n": 2500,
-            "dogru": 0.9792,
-            "bos": 0.0208,
+            "dogru": 0.9784,
+            "bos": 0.0216,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "musteriler.kayit_tarihi": {
             "n": 2500,
-            "dogru": 0.9864,
-            "bos": 0.008,
-            "yanlis": 0.0056,
+            "dogru": 0.9808,
+            "bos": 0.0072,
+            "yanlis": 0.012,
             "satir_yok": 0.0
           },
           "musteriler.soyad": {
@@ -249,15 +249,15 @@
           },
           "musteriler.telefon": {
             "n": 2500,
-            "dogru": 0.9788,
-            "bos": 0.0212,
+            "dogru": 0.978,
+            "bos": 0.022,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "siparisler.adet": {
             "n": 1000,
-            "dogru": 0.999,
-            "bos": 0.001,
+            "dogru": 1.0,
+            "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
@@ -270,57 +270,57 @@
           },
           "siparisler.durum": {
             "n": 1000,
-            "dogru": 0.986,
-            "bos": 0.014,
+            "dogru": 0.988,
+            "bos": 0.012,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "siparisler.indirim_orani": {
-            "n": 1000,
-            "dogru": 0.999,
-            "bos": 0.001,
-            "yanlis": 0.0,
-            "satir_yok": 0.0
-          },
-          "siparisler.kargo_firmasi": {
-            "n": 1000,
-            "dogru": 0.973,
-            "bos": 0.027,
-            "yanlis": 0.0,
-            "satir_yok": 0.0
-          },
-          "siparisler.musteri_id": {
             "n": 1000,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
+          "siparisler.kargo_firmasi": {
+            "n": 1000,
+            "dogru": 0.968,
+            "bos": 0.032,
+            "yanlis": 0.0,
+            "satir_yok": 0.0
+          },
+          "siparisler.musteri_id": {
+            "n": 1000,
+            "dogru": 0.999,
+            "bos": 0.0,
+            "yanlis": 0.001,
+            "satir_yok": 0.0
+          },
           "siparisler.odeme_yontemi": {
             "n": 1000,
-            "dogru": 0.959,
-            "bos": 0.041,
+            "dogru": 0.966,
+            "bos": 0.034,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "siparisler.siparis_tarihi": {
             "n": 1000,
-            "dogru": 0.984,
-            "bos": 0.016,
+            "dogru": 0.988,
+            "bos": 0.012,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "siparisler.teslim_tarihi": {
             "n": 1000,
             "dogru": 0.972,
-            "bos": 0.026,
-            "yanlis": 0.002,
+            "bos": 0.028,
+            "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "siparisler.toplam_tutar": {
             "n": 1000,
-            "dogru": 0.998,
-            "bos": 0.002,
+            "dogru": 1.0,
+            "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
@@ -333,9 +333,9 @@
           },
           "urunler.birim_fiyat": {
             "n": 300,
-            "dogru": 1.0,
+            "dogru": 0.9933333333333333,
             "bos": 0.0,
-            "yanlis": 0.0,
+            "yanlis": 0.006666666666666667,
             "satir_yok": 0.0
           },
           "urunler.kategori": {
@@ -361,16 +361,16 @@
           }
         },
         "tekrar": {
-          "gercek_cift": 161,
-          "tahmin_cift": 161,
-          "dogru_cift": 161,
+          "gercek_cift": 159,
+          "tahmin_cift": 156,
+          "dogru_cift": 156,
           "kesinlik": 1.0,
-          "duyarlilik": 1.0,
-          "f1": 1.0
+          "duyarlilik": 0.9811320754716981,
+          "f1": 0.9904761904761905
         },
         "satir_bozmalari": {
           "B2": {
-            "n": 21,
+            "n": 19,
             "basari": 1.0
           },
           "B14": {
@@ -385,7 +385,7 @@
             "gercek_satir": 2500,
             "bulunan_satir": 2500,
             "tekrar_kalan": 0,
-            "fazla_satir": 0
+            "fazla_satir": 3
           },
           "urunler": {
             "gercek_satir": 300,
@@ -400,120 +400,120 @@
             "fazla_satir": 0
           }
         },
-        "genel_dogruluk": 0.9767754616458905,
+        "genel_dogruluk": 0.976181827616626,
         "kurtarilabilir": {
-          "n": 19333,
-          "dogru": 0.9767754616458905,
-          "bos": 0.020586561837273056,
-          "yanlis": 0.002637976516836497,
+          "n": 19271,
+          "dogru": 0.976181827616626,
+          "bos": 0.019718748378392402,
+          "yanlis": 0.0040994240049815785,
           "satir_yok": 0.0
         },
         "kurtarilamaz": {
-          "n": 1090,
-          "dogru": 0.022018348623853212,
-          "bos": 0.9715596330275229,
-          "yanlis": 0.006422018348623854,
+          "n": 1081,
+          "dogru": 0.012950971322849213,
+          "bos": 0.9768732654949122,
+          "yanlis": 0.010175763182238668,
           "satir_yok": 0.0
         },
         "temiz_hucreler": {
-          "n": 113277,
+          "n": 113348,
           "dogru": 1.0,
           "bos": 0.0,
           "yanlis": 0.0,
           "satir_yok": 0.0
         },
         "uydurma": {
-          "n": 7,
-          "payda": 1578,
-          "oran": 0.004435994930291508
+          "n": 11,
+          "payda": 1617,
+          "oran": 0.006802721088435374
         },
         "bozma_turu": {
           "B1": {
-            "n": 192,
-            "dogru": 1.0,
+            "n": 163,
+            "dogru": 0.9263803680981595,
             "bos": 0.0,
-            "yanlis": 0.0,
+            "yanlis": 0.0736196319018405,
             "satir_yok": 0.0
           },
           "B10": {
-            "n": 138,
+            "n": 140,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B11": {
-            "n": 996,
+            "n": 997,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B12": {
-            "n": 237,
+            "n": 234,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B13": {
-            "n": 527,
+            "n": 528,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B15": {
-            "n": 596,
+            "n": 599,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B3": {
-            "n": 5501,
-            "dogru": 0.9907289583712052,
+            "n": 5425,
+            "dogru": 0.9882027649769585,
             "bos": 0.0,
-            "yanlis": 0.009271041628794765,
+            "yanlis": 0.011797235023041475,
             "satir_yok": 0.0
           },
           "B4": {
-            "n": 210,
-            "dogru": 0.9952380952380953,
-            "bos": 0.004761904761904762,
+            "n": 228,
+            "dogru": 0.9912280701754386,
+            "bos": 0.008771929824561403,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B5": {
-            "n": 590,
+            "n": 606,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B6": {
-            "n": 5952,
-            "dogru": 1.0,
+            "n": 5946,
+            "dogru": 0.9994954591321897,
             "bos": 0.0,
-            "yanlis": 0.0,
+            "yanlis": 0.0005045408678102926,
             "satir_yok": 0.0
           },
           "B7": {
-            "n": 182,
+            "n": 184,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B8": {
-            "n": 3599,
-            "dogru": 0.8896915809947208,
-            "bos": 0.11030841900527924,
+            "n": 3603,
+            "dogru": 0.8950874271440467,
+            "bos": 0.10491257285595337,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "B9": {
-            "n": 613,
+            "n": 618,
             "dogru": 1.0,
             "bos": 0.0,
             "yanlis": 0.0,
@@ -522,24 +522,24 @@
         },
         "bozma_turu_kurtarilamaz": {
           "B12": {
-            "n": 5,
-            "dogru": 0.0,
+            "n": 7,
+            "dogru": 0.14285714285714285,
             "bos": 0.0,
-            "yanlis": 1.0,
+            "yanlis": 0.8571428571428571,
             "satir_yok": 0.0
           },
           "B5": {
-            "n": 899,
-            "dogru": 0.017797552836484983,
-            "bos": 0.9810901001112347,
-            "yanlis": 0.0011123470522803114,
+            "n": 896,
+            "dogru": 0.011160714285714286,
+            "bos": 0.9877232142857143,
+            "yanlis": 0.0011160714285714285,
             "satir_yok": 0.0
           },
           "B7": {
-            "n": 186,
-            "dogru": 0.043010752688172046,
-            "bos": 0.9516129032258065,
-            "yanlis": 0.005376344086021506,
+            "n": 178,
+            "dogru": 0.016853932584269662,
+            "bos": 0.9606741573033708,
+            "yanlis": 0.02247191011235955,
             "satir_yok": 0.0
           }
         },
@@ -560,37 +560,37 @@
           },
           "musteriler.dogum_tarihi": {
             "n": 2500,
-            "dogru": 0.9672,
-            "bos": 0.0248,
-            "yanlis": 0.008,
+            "dogru": 0.9648,
+            "bos": 0.0244,
+            "yanlis": 0.0108,
             "satir_yok": 0.0
           },
           "musteriler.eposta": {
             "n": 2500,
-            "dogru": 0.9836,
-            "bos": 0.0164,
+            "dogru": 0.9828,
+            "bos": 0.0172,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "musteriler.il": {
             "n": 2500,
-            "dogru": 0.9996,
-            "bos": 0.0004,
+            "dogru": 1.0,
+            "bos": 0.0,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "musteriler.ilce": {
             "n": 2500,
-            "dogru": 0.9792,
-            "bos": 0.0208,
+            "dogru": 0.9784,
+            "bos": 0.0216,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "musteriler.kayit_tarihi": {
             "n": 2500,
-            "dogru": 0.9864,
-            "bos": 0.008,
-            "yanlis": 0.0056,
+            "dogru": 0.9808,
+            "bos": 0.0072,
+            "yanlis": 0.012,
             "satir_yok": 0.0
           },
           "musteriler.soyad": {
@@ -602,16 +602,16 @@
           },
           "musteriler.telefon": {
             "n": 2500,
-            "dogru": 0.9788,
-            "bos": 0.0212,
+            "dogru": 0.978,
+            "bos": 0.022,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "siparisler.adet": {
             "n": 10000,
-            "dogru": 0.9991,
+            "dogru": 0.9989,
             "bos": 0.0008,
-            "yanlis": 0.0001,
+            "yanlis": 0.0003,
             "satir_yok": 0.0
           },
           "siparisler.birim_fiyat": {
@@ -630,51 +630,51 @@
           },
           "siparisler.indirim_orani": {
             "n": 10000,
-            "dogru": 0.999,
-            "bos": 0.0009,
+            "dogru": 0.9992,
+            "bos": 0.0007,
             "yanlis": 0.0001,
             "satir_yok": 0.0
           },
           "siparisler.kargo_firmasi": {
             "n": 10000,
-            "dogru": 0.9706,
-            "bos": 0.0294,
+            "dogru": 0.9716,
+            "bos": 0.0284,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "siparisler.musteri_id": {
             "n": 10000,
-            "dogru": 1.0,
+            "dogru": 0.9988,
             "bos": 0.0,
-            "yanlis": 0.0,
+            "yanlis": 0.0012,
             "satir_yok": 0.0
           },
           "siparisler.odeme_yontemi": {
             "n": 10000,
-            "dogru": 0.9629,
-            "bos": 0.0371,
+            "dogru": 0.9632,
+            "bos": 0.0368,
             "yanlis": 0.0,
             "satir_yok": 0.0
           },
           "siparisler.siparis_tarihi": {
             "n": 10000,
-            "dogru": 0.9841,
-            "bos": 0.0145,
-            "yanlis": 0.0014,
+            "dogru": 0.9849,
+            "bos": 0.0147,
+            "yanlis": 0.0004,
             "satir_yok": 0.0
           },
           "siparisler.teslim_tarihi": {
             "n": 10000,
-            "dogru": 0.9719,
-            "bos": 0.0278,
-            "yanlis": 0.0003,
+            "dogru": 0.9725,
+            "bos": 0.0271,
+            "yanlis": 0.0004,
             "satir_yok": 0.0
           },
           "siparisler.toplam_tutar": {
             "n": 10000,
-            "dogru": 0.9989,
-            "bos": 0.0006,
-            "yanlis": 0.0005,
+            "dogru": 0.999,
+            "bos": 0.0003,
+            "yanlis": 0.0007,
             "satir_yok": 0.0
           },
           "siparisler.urun_id": {
@@ -686,9 +686,9 @@
           },
           "urunler.birim_fiyat": {
             "n": 300,
-            "dogru": 1.0,
+            "dogru": 0.9933333333333333,
             "bos": 0.0,
-            "yanlis": 0.0,
+            "yanlis": 0.006666666666666667,
             "satir_yok": 0.0
           },
           "urunler.kategori": {
@@ -714,30 +714,24 @@
           }
         },
         "tekrar": {
-          "gercek_cift": 161,
-          "tahmin_cift": 161,
-          "dogru_cift": 161,
+          "gercek_cift": 159,
+          "tahmin_cift": 156,
+          "dogru_cift": 156,
           "kesinlik": 1.0,
-          "duyarlilik": 1.0,
-          "f1": 1.0
+          "duyarlilik": 0.9811320754716981,
+          "f1": 0.9904761904761905
         },
         "satir_bozmalari": {
           "B2": {
-            "n": 206,
+            "n": 204,
             "basari": 1.0
           },
           "B14": {
-            "n": 132,
+            "n": 133,
             "basari": 1.0
           }
         }
       }
-    },
-    "hibrit": {
-      "atlandi": "ANTHROPIC_API_KEY tanımlı değil"
-    },
-    "llm": {
-      "atlandi": "ANTHROPIC_API_KEY tanımlı değil"
     }
   }
 }

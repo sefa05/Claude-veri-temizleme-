@@ -28,3 +28,12 @@ def test_kural_yontemi_uctan_uca(kucuk_veri, tmp_path):
     assert o["tekrar"]["f1"] > 0.95
     assert o["satirlar"]["siparisler"]["bulunan_satir"] == o["satirlar"]["siparisler"]["gercek_satir"]
     assert o["satir_bozmalari"]["B2"]["basari"] == 1.0
+
+
+def test_puanla_komutu(kucuk_veri, tmp_path, capsys):
+    from veri_temizleme.cli import main
+
+    kural_ile_temizle(kucuk_veri / "veri" / "kirli", tmp_path)
+    assert main(["puanla", str(tmp_path / "temiz"), "--gercek", str(kucuk_veri / "veri" / "gercek")]) == 0
+    cikti = capsys.readouterr().out
+    assert "Genel doğru düzeltme" in cikti and "B3" in cikti

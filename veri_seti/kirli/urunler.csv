@@ -1,0 +1,301 @@
+urun_id,urun_adi,kategori,marka,birim_fiyat
+U0001,Adidas Dambıl Seti Classic 11,Spor & Outdoor,Adidas,"4.644,99"
+U0002,Apple  Kablosuz Kulaklık Classic 72 ,Elektronik,Apple,387.99
+U0003,Nescafé  Kahve Ultra 1 ,Süpermarket,Nescafé,369.99
+U0004,Fisher-Price Yapı Seti Slim 22,Oyuncak,yok,114.99
+U0005,Nescafé Kahve Ultra 37,Süpermarket,Nescafé,59.16
+U0006,Nivea Ruj Slim 94,Kozmetik,-,"384,99 TL"
+U0007,Fisher-Price Oyuncak Araba Classic 53,Oyuncak,Fisher-Price,133.99 TL
+U0008,JBL Kablosuz Kulaklık Plus 5,Elektronik,JBL,"44.244,99"
+U0009,Samsung Monitör Pro 14,Elektronik,Samsung,4679.99
+U0010,Nike Termos Lite 2,Spor & Outdoor,Nike,688.99
+U0011,Madame Coco Halı Classic 73,Ev & Yaşam,Madame Coco,"1.146,99"
+U0012,Garnier Nemlendirici Krem Pro 11,Kozmetik,N/A,"63,09 tl"
+U0013,Paşabahçe Havlu Seti Slim 80,Ev & YaÅŸam,Paşabahçe,3693.99
+U0014,Ariel Çay Slim 82,S?permarket,Ariel,97.22
+U0015,Mattel Kutu Oyunu Ultra 96,Oyuncak,Mattel,299.99
+U0016,Madame Coco Yemek Takımı Mini 85,Ev & Yaşam,Madame Coco,2440.99
+U0017,İş Bankası Kültür Yayınları Roman Classic 11,KİTAP,İş Bankası Kültür Yayınları,105.99
+U0018,DeFacto Gömlek Max 57,Giyim,DeFacto,375.99
+U0019,Nike Yoga Matı Max 59,Spor & Outdoor,Nike,6965.99
+U0020,Golden Rose Ruj Mini 95,Kozmetik,Golden Rose,666.99
+U0021,Çaykur Bebek Bezi Plus 96,Süpermarket,--,?
+U0022,Lego Kutu Oyunu Slim 44,Oyuncak,Lego,583.99
+U0023,Mavi Mont Pro 47,Giyim,Mavi,773.99
+U0024,Lego Peluş Ayı Classic 76,Oyuncak,Lego,881.99
+U0025,Lenovo Bluetooth Hoparlör Mini 22,Elektronik,Lenovo,"1536,99 tl"
+U0026,JBL Monitör Classic 34,Elektronik,JBL,1969.99
+U0027,Hasbro Oyuncak Araba Classic 48,Oyuncak,Hasbro,1516.99
+U0028,Adidas Kamp Çadırı Plus 13,Spor & Outdoor,Adidas,6009.99
+U0029,Colin's Tişört Slim 89,Giyim,Colin's,2262.99
+U0030,Doğan Kitap Tarih Kitabı Slim 77,Kitap,?,68.52
+U0031,English Home Yemek Takımı Slim 74,Ev & Yaşam,English Home,913.99
+U0032,Flormar Maskara Ultra 93,Kozmetik,Flormar,1108.99
+U0033,Pegasus Roman Pro 20,Kitap,Pegasus,57.20
+U0034,Mattel Oyuncak Araba Slim 79,Oyuncak,--,3120.99
+U0035,Komili Kahve Slim 43,Süpermarket,Komili,
+U0036,Paşabahçe Masa Lambası Ultra 71,Ev & Yaşam,Paşabahçe,"₺4,851.99"
+U0037,  English Home Tencere Seti Ultra 88   ,Ev & Yaşam,English Home,512.99
+U0038,Doğan Kitap Çocuk Kitabı Mini 1,Kitap,Doğan Kitap,81.62
+U0039,Golden Rose Parfüm Ultra 93,Kozmetik,Golden Rose,597.99
+U0040,Doğan Kitap Kişisel Gelişim Kitabı Plus 34,Kitap,Doğan Kitap,112.99
+U0041,Komili Çay Slim 69,SÃ¼permarket,Komili,57.34
+U0042,YKY Kişisel Gelişim Kitabı Lite 5​5,Kitap,YKY,117.99
+U0043,Fisher-Price Kutu Oyunu Ultra 61,Oyuncak,nan,₺323.99
+U0044,YKY Bilim Kurgu Romanı Classic 58,Kitap,YKY,"250,99₺"
+U0045,Koton Mont Pro 15,Giyim,Koton,"2703,99₺"
+U0046,Paşabahçe Halı Max 54,Ev & Yaşam,Paşabahçe,7845.99
+U0047,JBL Powerbank Lite 90,Elektronik,JBL,3744.99
+U0048,Colin's  Elbise Max 33 ,Giyim,Colin's,491.99
+U0049,Garnier Güneş Kremi Pro 15,Kozmetik,Garnier,113.99
+U0050,Pegasus Çocuk Kitabı Classic 62,Kitap,Pegasus,172.99
+U0051,Mattel Yapboz Plus 9,OYUNCAK,Mattel,3273.99
+U0052,Fisher-Price Oyuncak Araba Lite 90,Oyuncak,Fisher-Price,2648.99
+U0053,Casper Akıllı Telefon Mini 43,Elektronik,Casper,"8.619,99 TL"
+U0054,JBL Tablet Plus 49,Elektronik,JBL,419.99
+U0055,Taç Halı Classic 31,Ev & Yaşam,Taç,498.99
+U0056,Golden Rose Maskara Lite 84,Kozmetik,Golden Rose,"1.210,99 TL"
+U0057,Nescafé Bebek Bezi Mini 82,Süpermarket,Nescafé,325.99
+U0058,YKY  Tarih Kitabı Slim 54 ,Kitap,YKY,63.06
+U0059,LC Waikiki Kot Pantolon Plus 27,Giyim,LC Waikiki,830.99
+U0060,Casper Laptop Ultra 70,Elektronik,Casper,18387.99
+U0061,Anker Powerbank Plus 41,Elektronik,Anker,"13345,99₺"
+U0062,YKY Bilim Kurgu Romanı Slim 66,Kitap,YKY,105.99
+U0063,L'Oréal Ruj Slim 91,Kozmetik,L'Oréal,1986.99
+U0064,Zara Tişört Lite 81,Giyim,Zara,2212.99
+U0065,Madame Coco Yemek Takımı Plus 22,Ev & Yaşam,Madame Coco,5843.99
+U0066,Fisher-Price Kutu Oyunu Pro 41,OYUNCAK,Fisher-Price,"1.940,99"
+U0067,Doğan Kitap Bilim Kurgu Romanı Classic 23,Kitap,Doğan Kitap,146.99
+U0068,Paşabahçe Tencere Seti Ultra 5,Ev & Yaşam,Paşabahçe,671.99
+U0069,Lenovo Kablosuz Kulaklık Max 87,Elektronik,Lenovo,839.99
+U0070,Nescafé Zeytinyağı Max 96,Süpermarket,Nescafé,79.25
+U0071,Lenovo Powerbank Mini 67,Elektronik,Lenovo,3422.99
+U0072,İş Bankası Kültür Yayınları Tarih Kitabı Ultra 70,kitap,İş Bankası Kültür Yayınları,"102,99₺"
+U0073,Mattel Oyuncak Araba Ultra 19,Oyuncak,Mattel,"655,99"
+U0074,Lego Oyuncak Araba Lite 1,Oyuncak,Lego,603.99
+U0075,Çaykur Bebek Bezi Max 35,Super Market,Çaykur,176.99
+U0076,Colin's Tişört Mini 24,GİYİM,Colin's,1221.99
+U0077,Nivea Şampuan Slim 97,Kozmetik,Nivea,1439.99
+U0078,Decathlon Yoga Matı Slim 55,Spor & Outdoor,Decathlon,304.99
+U0079,Taç Havlu Seti Pro 8,Ev & Yaşam,Taç,TRY 511.99
+U0080,L'Oréal Güneş Kremi Slim 91,Kozmetik,L'Oréal,696.99
+U0081,Flormar Nemlendirici Krem Ultra 29,KOZMETİK,Flormar,?
+U0082,Karaca Masa Lambası Slim 58,Ev & Yaşam,Karaca,6016.99
+U0083,Huawei Laptop Classic 6,Elektronik,Huawei,Bilinmiyor
+U0084,Madame Coco Tencere Seti Slim 38,Ev & Yaşam,Madame Coco,"5.702,99"
+U0085,Garnier Ruj Ultra 84,Kozmetik,Garnier,70.58
+U0086,LC Waikiki Sweatshirt Ultra 72,Giyim,LC Waikiki,814.99
+U0087,DeFacto Elbise Mini 82,Giyim,DeFacto,1773.99
+U0088,Doğan Kitap Tarih Kitabı Max 68,Kitap,Doğan Kitap,"102,99₺"
+U0089,Decathlon Bisiklet Kaskı Pro 39,Spor & Outdoor,Decathlon,7763.99
+U0090,  Pegasus Çocuk Kitabı Mini 64   ,Kitap,Pegasus,₺242.99
+U0091,Nivea Maskara Lite 80,Kozmetik,Nivea,2113.99
+U0092,Madame Coco Masa Lambası Slim 46,Ev & Yaşam,Madame Coco,"1436,99₺"
+U0093,Nescafé Kahve Mini 21,Süpermarket,Nescafé,?
+U0094,YKY Bilim Kurgu Romanı Classic 21,Kitap,YKY,110.99
+U0095,Casper Powerbank Pro 82,Elektronik,Casper,6362.99
+U0096,Adidas Koşu Ayakkabısı Plus 17,Spor & Outdoor,ADİDAS,7157.99
+U0097,Lenovo Tablet Pro 89,Elektronik,Lenovo,"645,99 tl"
+U0098,Nescafé Çay Lite 70,Süpermarket,Nescafé,95.49
+U0099,Decathlon Bisiklet Kaskı Pro 42,Spor & Outdoor,yok,5761.99
+U0100,LC Waikiki Elbise Pro 15,Giyim,LC Waikiki,474.99
+U0101,Nivea Ruj Classic 26,Kozmetik,Nivea,235.99
+U0102,NescafÃ© ZeytinyaÄŸÄ± Ultra 63,Süpermarket,NESCAFÉ,80.72
+U0103,Nescafé Deterjan Mini 47,Super Market,nescafé,289.99
+U0104,Decathlon Termos Classic 46,Spor & Outdoor,Decathlon,"₺7,662.99"
+U0105,Columbia Dambıl Seti Slim 48,Spor & Outdoor,Columbia,"165,99"
+U0106,Puma Termos Max 89,SPOR & OUTDOOR,Puma,yok
+U0107,Paşabahçe Halı Plus 57,Ev & Yaşam,Paşabahçe,304.99
+U0108,Puma Koşu Ayakkabısı Max 80,Spor & Outdoor,Puma,615.99
+U0109,Madame Coco Yemek Takımı Slim 19,Ev & Yaşam,Madame Coco,"3.954,99"
+U0110,Casper Laptop Plus 51,Elektronik,Casper,10448.99
+U0111,LC Waikiki Elbise Lite 12,Giyim,LC Waikiki,384.99
+U0112,Decathlon Dambıl Seti Classic 41,Spor & Outdoor,Decathlon,275.99
+U0113,Flormar Maskara Lite 61,Kozmetik,Flormar,847.99
+U0114,Doğan Kitap Kişisel Gelişim Kitabı Pro 66,Kitap,Doğan Kitap,233.99
+U0115,Madame Coco Nevresim Takımı Max 94,Ev & Yaşam,Madame Coco,760.99
+U0116,Nivea Maskara Plus 22,Kozmetik,Nivea,"1.329,99"
+U0117,YKY Roman Lite 75,Kitap,YKY,64.95
+U0118,Hasbro Peluş Ayı Pro 74,Oyuncak,Hasbro,243.99
+U0119,English Home Masa Lambası Pro 47,ev & yaşam,English Home,2830.99
+U0120,Madame Coco Havlu Seti Slim 75,Ev & Yaşam,Madame Coco,1626.99
+U0121,Huawei Monitör Classic 12,Elektronik,NULL,712.99
+U0122,Nivea Şampuan Classic 53,Kozmetik,Nivea,62.09
+U0123,LC Waikiki Kot Pantolon Classic 95,Giyim,LC Waikiki,3116.99
+U0124,  L'Oréal Güneş Kremi Slim 61   ,Kozmetik,L'Oréal,80.05
+U0125,Garnier Maskara Mini 89,Kozmetik,Garnier,125.99
+U0126,Çaykur Bebek Bezi Mini 12,Süpermarket,Çaykur,85.51
+U0127,L'Oréal Nemlendirici Krem Plus 99,Kozmetik,L'Oréal,97.87
+U0128,Xiaomi Kablosuz Kulaklık Max 65,Elektronik,--,"541,99"
+U0129,Flormar Parfüm Classic 76,Kozmetik,Flormar,TRY 2214.99
+U0130,Xiaomi Akıllı Telefon Plus 75,Elektronik,Xiaomi,2545.99
+U0131,Mattel Peluş Ayı Lite 25,Oyuncak,Mattel,151.99
+U0132,Colin's Elbise Pro 66,Giyim,Colin's,243.99
+U0133,Nivea Şampuan Mini 72,Kozmetik,Nivea,1270.99
+U0134,Flormar Ruj Lite 30,Kozmetik & Kişisel Bakım,Flormar,1461.99
+U0135,Fisher-Price Yapı Seti Classic 92,Oyuncak,Fisher-Price,2283.99
+U0136,Mavi Ti??rt Pro 84,Giyim,Mavi,297.99
+U0137,Zara Tişört Ultra 38,Giyim,Zara,167.99
+U0138,Apple Tablet Max 21,Elektronik,Apple,394.99
+U0139,L'Oréal Şampuan Slim 56,Kozmetik,L'Oréal,67.43
+U0140,Nescafé Deterjan Ultra 99,Süpermarket,Nescafé,154.99
+U0141,Casper Monitör Slim 97,Elektronik,Casper,13800
+U0142,Decathlon Yoga Matı Max 10,Spor & Outdoor,Decathlon,4404.99
+U0143,Flormar Ruj Pro 26,Kozmetik & Kişisel Bakım,Flormar,967.99
+U0144,LC Waikiki Gömlek Pro 41,Giyim,LC Waikiki,1698.99
+U0145,Nescafé Zeytinyağı Mini 99,SÜPERMARKET,Nescafé,"90,63 tl"
+U0146,Fisher-Price Yapboz Pro 2,Oyuncak,Fisher-Price,340.99
+U0147,Doğan Kitap Bilim Kur​gu Romanı Mini 51,Kitap,Doğan Kitap,210.99
+U0148,Nivea Nemlendirici Krem Max 89,KOZMETİK,Nivea,₺415.99
+U0149,Casper Kablosuz Kulaklık Slim 67,Elektronik,Casper,25221.99
+U0150,Casper Kablosuz Kulaklık Classic 84,Elektronik,Casper,450.99
+U0151,Hasbro Oyuncak Araba Lite 28,Oyuncak,Hasbro,288.99
+U0152,Anker Bluetooth Hoparlör Ultra 38,Elektronik,Anker,1553.99
+U0153,Garnier Maskara Lite 32,Kozmetik,Garnier,TRY 428.99
+U0154,Casper Laptop Lite 68,Elektronik,Casper,29830.99
+U0155,Columbia Termos Lite 88,Spor & Outdoor,Columbia,nan
+U0156,Puma Dambıl Seti Slim 15,Spor & Outdoor,Puma,356.99
+U0157,Zara Sweatshirt Pro 28,Giyim,Zara,2714.99
+U0158,Karaca Havlu Seti Ultra 70,Ev & Yaşam,Karaca,"₺1,582.99"
+U0159,Garnier Maskara Ultra 26,Kozmetik,NULL,316.99
+U0160,Nivea Nemlendirici Krem Pro 5,Kozmetik,nan,TRY 176.99
+U0161,Golden Rose Şampuan Ultra 47,Kozmetik,Golden Rose,529.99
+U0162,Fisher-Price Peluş Ayı Mini 95,Oyuncak,Fisher-Price,549.99
+U0163,Can Yayınları Tarih Kitabı Max 63,Kitap,Can Yayınları,255.99 TL
+U0164,English Home Havlu Seti Max 14,Ev & Yaşam,ENGLİSH HOME,1080.99
+U0165,Adidas Bisiklet Kaskı Ultra 62,Spor & Outdoor,Adidas,769.99
+U0166,DeFacto Mont Classic 1,Giyim,DeFacto,754.99
+U0167,Colin's Mont Classic 11,Giyim,Colin's,480.99
+U0168,Paşabahçe Nevresim Takımı Classic 92,Ev & Yaşam,Paşabahçe,440.99
+U0169,Lego Yapı Seti Mini 69,Oyuncak,Lego,387.99
+U0170,DeFacto Sweatshirt Pro 26,Giyim,DeFacto,"2378,99 tl"
+U0171,LC Waikiki Elbise Lite 52,Giyim & Moda,LC Waikiki,1584.99
+U0172,JBL Bluetooth Hoparlör Slim 91,Elektronik,JBL,"9435,99 tl"
+U0173,Mattel Peluş Ayı Lite 95,Oyuncak,Mattel,411.99
+U0174,Golden Rose Güneş Kremi Classic 30,Kozmetik,Golden Rose,₺489.99
+U0175,DeFacto Tişört Max 38,giyim,DeFacto,"2.377,99 TL"
+U0176,YKY Çocuk Kitabı Slim 73,Kitap,Bilinmiyor,94.26
+U0177,Fisher-Price Yapı Seti Pro 30,Oyuncak,Fisher-Price,TRY 3407.99
+U0178,LC Waikiki Elbise Mini 83,Giyim,LC Waikiki,3279.99
+U0179,Taç Yemek Takımı Max 67,Ev & Yaşam,Taç,"801,99"
+U0180,Ariel Zeytinyağı Plus 84,Süpermarket,Ariel,595.99
+U0181,Komili Çay Max 69,Süpermarket,Komili,"144,99 TL"
+U0182,JBL Monitör Pro 75,Elektronik,JBL,962.99
+U0183,Apple Powerbank Slim 5,Elektronik,Apple,5989.99
+U0184,Koton Sweatshirt Classic 97,Giyim,Koton,1715.99
+U0185,Lenovo Akıllı Saat Classic 72,Elektronik,Lenovo,1448.99
+U0186,Çaykur Kahve Pro 89,Süpermarket,Çaykur,167.99
+U0187,Prima Deterjan Slim 91,Süpermarket,Prima,71.58
+U0188,Paşabahçe Tencere Seti Classic 37,ev & yaşam,Paşabahçe,1918.99
+U0189,Fisher-Price Kutu Oyunu Slim 38,oyuncak,Fisher-Price,162.99
+U0190,Colin's Gömlek Ultra 90,Giyim,Colin's,1352.99
+U0191,Decathlon Yoga Matı Ultra 44,Spor & Outdoor,Decathlon,298.99
+U0192,Samsung Kablosuz Kulaklık Mini 96,Elektronik,Samsung,36395.99
+U0193,Colin's Sweatshirt Max 35,Giyim,Colin's,392.99
+U0194,YKY Bilim Kurgu Romanı Lite 30,KİTAP,NULL,"85,33 TL"
+U0195,Mavi Gömlek Max 71,Giyim,Mavi,307.99
+U0196,Taç Tencere Seti Ultra​ 92,Ev & Yaşam,Bilinmiyor,279.99 TL
+U0197,Samsung Kablosuz Kulaklık Ultra 2,Elektronik,Samsung,"3974,99 tl"
+U0198,Koton Gömlek Classic 82,Giyim,Koton,1184.99
+U0199,Çaykur Kahve Max 6,Süpermarket,Çaykur,593.99
+U0200,	Pegasus Çocuk Kitabı Plus 90,Kitap,Pegasus,371.99
+U0201,İş Bankası Kültür Yayınları Kişisel Gelişim Kitabı Slim 92,Kitap,İş Bankası Kültür Yayınları,93.45
+U0202,Paşabahçe Yemek Takımı Max 62,Ev & Yaşam,Paşabahçe,372.99
+U0203,Ariel Çay Ultra 74,Süpermarket,Ariel,882.99
+U0204,Colin's Kot Pantolon Pro 18,GİYİM,Colin's,553.99
+U0205,Decathlon Dambıl Seti Ultra 92,Spor & Outdoor,Decathlon,1037.99
+U0206,DeFacto Elbise Lite 94,GİYİM,DeFacto,"1.489,99"
+U0207,Zara Sweatshirt Pro 87,Giyim,Zara,2475.99
+U0208,Can  Yayınları Roman Ultra 94 ,Kitap,Can Yayınları,161.99
+U0209,Mavi Tişört Plus 39,giyım,Mavi,2833.99
+U0210,YKY Tarih Kitabı Plus 14,Kitap,YKY,TRY 448.99
+U0211,Flormar Güneş Kremi Ultra 47,Kozmetik,Flormar,TRY 1728.99
+U0212,Madame Coco Havlu Seti Max 94,Ev & Yaşam,Madame Coco,4017.99
+U0213,Adidas Yoga Matı Ultra 93,Spor & Outdoor,Adidas,"2.321,99 TL"
+U0214,Pegasus Tarih Kitabı Ultra 1,Kitap,Pegasus,45.86
+U0215,Colin's Kot Pantolon Slim 32,Giyim & Moda,Colin's,257.99
+U0216,Koton Tişört Pro 71 ,Giyim,Koton,TRY 3173.99
+U0217,Taç Havlu Seti Pro 79,Ev & Yaşam,Taç,904.99
+U0218,  Fisher-Price Yapı Seti Lite 70   ,OYUNCAK,fisher-price,461.99
+U0219,Garnier Nemlendirici Krem Slim 59,Kozmetik,Garnier,78.23
+U0220,Doğan Kitap Bilim Kurgu Romanı Lite 14,Kitap,Doğan Kitap,256.99
+U0221,Samsung Tablet Ultra 2,Elektronik,Samsung,27018.99
+U0222,Casper Akıllı Telefon Max 63,Elektronik,Casper,5299.99
+U0223,Anker Powerbank Max 22,Elektronik,Anker,423.99
+U0224,Lenovo Akıllı Saat Classic 77,Elektronik,Lenovo,784.99
+U0225,Fisher-Price Peluş Ayı Ultra 53,Oyuncak,Fisher-Price,2766.99
+U0226,Paşabahçe Havlu Seti Slim 8,Ev & Yaşam,Paşabahçe,4641.99
+U0227,YKY Çocuk Kitabı Mini 41,Kitap,YKY,"115,99₺"
+U0228,Fisher-Price Yapboz Slim 87,Oyuncak,Fisher-Price,266.99
+U0229,Paşabahçe Nevresim Takımı Ultra 76,Ev & Yaşam,Paşabahçe,543.99
+U0230,Prima Deterjan Pro 6,Süpermarket,Prima,87.55
+U0231,Adidas Yoga Matı Pro 24,Spor & Outdoor,Adidas,898.99
+U0232,Taç Masa Lambası Max 8,Ev & Yaşam,Taç,"444,99"
+U0233,Mattel Peluş Ayı Lite 48,Oyuncak,Mattel,2955.99
+U0234,Nivea Parf?m Pro 60,Kozmetik,Nivea,1419.99
+U0235,Can Yayınları Tarih Kitabı Max 43,KİTAP,Can Yayınları,49.32
+U0236,Adidas Termos Lite 35,Spor & Outdoor,Adidas,1006.99
+U0237,Ariel Kahve Lite 44,süpermarket,Ariel,₺386.99
+U0238,Golden Rose Maskara Pro 8,kozmetik,Golden Rose,1234.99
+U0239,Adidas Kamp Çadırı Mini 77,Spor & Outdoor,Adidas,6776.99
+U0240,Nivea  Ruj Mini 30 ,Kozmetik,Nivea,148.99
+U0241,İş Bankası Kültür Yayınları Kişisel Gelişim Kitabı Slim 90,Kitap,İş Bankası Kültür Yayınları,"104,99 tl"
+U0242,Golden Rose Nemlendirici Krem Max 64,Kozmetik,Golden Rose,1017.99
+U0243,Madame Coco Masa Lambası Max 14,ev & yasam,NULL,227.99
+U0244,Golden Rose Maskara Pro 1,Kozmetik,Golden Rose,586.99
+U0245,İş Bankası Kültür Yayınları Kişisel Gelişim Kitabı Classic 5,Kitap,İş Bankası Kültür Yayınları,"65,60 tl"
+U0246,Nescafé Deterjan Max 25,Süpermarket,Nescafé,98.11
+U0247,Flormar Maskara Max 69,Kozmetik,Flormar,194.99
+U0248,Lego Oyuncak Araba Slim 83,Oyuncak,Lego,564.99
+U0249,Huawei Monitör Max 57,Elektronik Ürünler,Huawei,"592,99"
+U0250,Nike Kamp Çadırı Mini 74,Spor & Outdoor,Nike,2224.99
+U0251,Anker Akıllı Saat Slim 91,Elektronik,Anker,"2.253,99"
+U0252,İş Bankası Kültür Yayınları Roman Slim 63,Kitap,İş Bankası Kültür Yayınları,"199,99"
+U0253,Golden Rose Güneş Kremi Lite 56,Kozmetik,Golden Rose,201.99
+U0254,Adidas Termos Lite 81,Spor & Outdoor,Adidas,4375.99
+U0255,Garnier Ruj Slim 79,Kozmetik,Garnier,140.99
+U0256,Paşabahçe Masa Lambası Max 82,Ev & Yaşam,Paşabahçe,3864.99
+U0257,Lenovo Monitör Ultra 87,Elektronik,Lenovo,11723
+U0258,Nivea Parfüm Slim 3,Kozmetik,Nivea,162.99 TL
+U0259,Zara Elbise Slim 97,Giyim,Zara,936.99
+U0260,Mattel Peluş Ayı Plus 88,Oyuncak,Mattel,1141.99
+U0261,  Xiaomi Bluetooth Hoparlör Pro 51   ,Elektronik,Xiaomi,3412.99
+U0262,Lego Yapboz Ultra 29,OYUNCAK,Lego,3382.99
+U0263,Çaykur Çay Plus 39,Süpermarket,Çaykur,548.99
+U0264,Hasbro Oyuncak Araba Slim 93,Oyuncak,Hasbro,891.99
+U0265,Lenovo Bluetooth Hoparlör Lite 40,Elektronik,Lenovo,752.99
+U0266,Çaykur Zeytinyağı Lite 14,Süpermarket,Çaykur,127.99
+U0267,Hasbro Yapboz Classic 27,oyuncak,Hasbro,765.99
+U0268,Hasbro Kutu Oyunu Classic 79,Oyuncak,Hasbro,330.99
+U0269,Can Yayınları Kişisel Gelişim Kitabı Slim 42,Kitap,Can Yayınları,268.99 TL
+U0270,Doğan Kitap Çocuk Kitabı Mini 85,Kitap,DOĞAN KİTAP,193.99
+U0271,Flormar Ruj Pro 66,Kozmetik,Flormar,"470,99 TL"
+U0272,S​amsung Laptop Plus 3,Elektronik,Samsung,11128.99
+U0273,Komili Çay Mini 29,Süpermarket,Komili,359.99
+U0274,Madame Coco Halı Mini 85,Ev & Yaşam,Madame Coco,"3.751,99"
+U0275,Nivea Nemlendirici Krem Max 37,Kozmetik,Nivea,"2.835,99"
+U0276,Ariel Bebek Bezi Max 77,Süpermarket,Ariel,848.99
+U0277,Fisher-Price Yapı Seti Plus 75,Oyuncak,Fisher-Price,"154,99₺"
+U0278,Huawei Powerbank Mini 93,elektronik,Huawei,55624.99
+U0279,Casper Tablet Lite 53,Elektronik,Casper,1762.99
+U0280,Prima Bebek Bezi Max 86,Market,Prima,"193,99 TL"
+U0281,Columbia Dambıl Seti Classic 12,spor & outdoor,Columbia,1089.99
+U0282,Lego Kutu Oyunu Pro 77,Oyuncak,Lego,201.99
+U0283,Mavi Mont Slim 82,Giyim,MAVİ,"2985,99 tl"
+U0284,  LC Waikiki Mont Slim 97   ,Giyim,LC Waikiki,703.99
+U0285,L'Oréal Ruj Mini 74,Kozmetik,L'Oréal,2003.99
+U0286,Doğan Kitap Kişisel Gelişim Kitabı Max 70,Kitap,Doğan Kitap,115.99
+U0287,JBL Laptop Pro 85,Elektronik,JBL,"1979,99₺"
+U0288,Mattel Yapı Seti Max 57,Oyuncak,Mattel,687.99
+U0289,Doğan Kitap Tarih Kitabı Plus 76,Kitap,Doğan Kitap,143.99
+U0290,Golden Rose Şampuan Max 34,Kozmetik,Golden Rose,265.99
+U0291,Mattel Kutu Oyunu Max 65,Oyuncak,Mattel,115.99
+U0292,Madame Coco Nevresim Takımı Lite 31,Ev ve Yaşam,Madame Coco,235.99
+U0293,Mattel Yapboz Lite 34,Oyuncak,Mattel,"2731,99₺"
+U0294,İş Bankası Kültür Yayınları Çocuk Kitabı Classic 68,kitap,IS BANKASİ KULTUR YAYİNLARİ,106.99
+U0295,Adidas Koşu Ayakkabısı Lite 14,spor,Adidas,2488.99
+U0296,Lego Oyuncak Araba Ultra 9,Oyuncak,Lego,101.99
+U0297,Lenovo Bluetooth Hoparlör Classic 54,Elektronik,Lenovo,9016.99
+U0298,Fisher-Price Yapı Seti Classic 76,Oyuncak,Fisher-Price,"1.733,99"
+U0299,Golden Rose Ruj Classic 57,Kozmetik,Golden Rose,190.99
+U0300,Lego Yapı Seti Mini 11,Oyuncak,Lego,"193,99₺"

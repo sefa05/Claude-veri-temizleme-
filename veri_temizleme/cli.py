@@ -43,6 +43,14 @@ def main(argv: list[str] | None = None) -> int:
     m.add_argument("--orneklem", default=1000, type=int)
     m.add_argument("--seed", default=42, type=int)
 
+    pu = alt.add_parser("puanla", help="Kendi temizlediğin veriyi gerçek doğruyla puanla")
+    pu.add_argument("temiz", type=Path, help="musteriler.csv, urunler.csv, siparisler.csv içeren klasör")
+    pu.add_argument("--gercek", default=Path("veri_seti/gercek"), type=Path)
+
+    g = alt.add_parser("gorsel", help="sonuclar.json'dan paylaşım görseli (PNG) üret")
+    g.add_argument("--klasor", default="calisma", type=Path)
+    g.add_argument("--cikti", default=Path("gorseller/tablo.png"), type=Path)
+
     r = alt.add_parser("rapor", help="sonuclar.json'dan HTML rapor üret")
     r.add_argument("--klasor", default="calisma", type=Path)
 
@@ -65,11 +73,37 @@ def main(argv: list[str] | None = None) -> int:
         kirli = a.klasor / "veri" / "kirli"
         print(json.dumps(maliyet_tahmini(kirli, orneklem_sec(kirli / "siparisler.csv", a.orneklem, a.seed), a.model)))
         return 0
+    if a.komut == "puanla":
+        from .olcum import olc
+        print(puan_metni(olc(a.temiz, a.gercek).ozet))
+        return 0
+    if a.komut == "gorsel":
+        from .gorsel import tablo_gorseli
+        print(tablo_gorseli(a.klasor, a.cikti))
+        return 0
     if a.komut == "rapor":
         from .rapor import rapor_uret
         print(rapor_uret(a.klasor))
         return 0
     return 1
+
+
+def puan_metni(o: dict) -> str:
+    from .uretici.bozma import BOZMA_ADLARI
+
+    y = lambda v: f"%{v * 100:.1f}".replace(".", ",")  # noqa: E731
+    satirlar = [
+        f"Genel doğru düzeltme      {y(o['genel_dogruluk'])}   (kurtarılabilir {o['kurtarilabilir']['n']} bozuk hücre)",
+        f"Uydurma                   {o['uydurma']['n']} / {o['uydurma']['payda']}   ({y(o['uydurma']['oran'])})",
+        f"Temiz hücreyi bozma       {y(1 - o['temiz_hucreler']['dogru'])}",
+        f"Müşteri eşleştirme F1     {o['tekrar']['f1']:.3f}",
+        f"Tekrar sipariş silme      {y(o['satir_bozmalari']['B2']['basari'])}",
+        f"Bozuk satır kurtarma      {y(o['satir_bozmalari']['B14']['basari'])}",
+        "", "Bozma türüne göre:",
+    ]
+    for b, d in sorted(o["bozma_turu"].items(), key=lambda x: int(x[0][1:])):
+        satirlar.append(f"  {b:<4} {BOZMA_ADLARI[b]:<30} {y(d['dogru']):>7}  (boş {y(d['bos'])}, yanlış {y(d['yanlis'])})")
+    return "\n".join(satirlar)
 
 
 if __name__ == "__main__":
