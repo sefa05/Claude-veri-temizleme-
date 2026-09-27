@@ -35,11 +35,11 @@ satır sayısı farkını da izleyin.
 İki bölüm `site/` klasöründe statik bir site olarak da var: ana sayfa, `/bolum-1` ve `/bolum-2`. Grafikler sayfada
 HTML olarak çizilir, mobilde ve karanlık modda çalışır. X'te paylaşılınca görselli önizleme kartı çıkar.
 
-Vercel'e yüklemek için repoyu Vercel'de içe aktarmak yeterli. `vercel.json` çıktı klasörünü (`site`) ve kısa
-adresleri ayarlar, derleme adımı yoktur. Siteyi yeniden üretmek için:
+Netlify'a yüklemek için `site/` klasörünü (ya da içeriğinin zip'ini) Netlify'ın sürükle-bırak alanına bırakmak
+yeterli. Repo Netlify'a bağlanırsa `netlify.toml` yayın klasörünü ayarlar. Siteyi yeniden üretmek için:
 
 ```bash
-python belgeler/site_uret.py --site-url https://alan-adin.vercel.app
+python belgeler/site_uret.py --site-url https://alan-adin.netlify.app
 ```
 
 ## Sen de dene
@@ -114,7 +114,7 @@ Tüm rakamlar `ornek_sonuc/` altındaki sonuç dosyalarından okunur. Aynı seed
 
 ```
 belgeler/             1. ve 2. bölüm PDF'leri, site ve bunları üreten betikler
-site/                 Vercel'e yüklenen statik site (üretilmiş dosyalar)
+site/                 Netlify'a yüklenen statik site (üretilmiş dosyalar)
 gorseller/            X için paylaşım görselleri
 veri_seti/            1. bölüm: kirli veri + cevap anahtarı
 veri_seti_surpriz/    2. bölüm: kirli veri + cevap anahtarı

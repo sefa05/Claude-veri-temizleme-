@@ -1,4 +1,4 @@
-"""Vercel'e yüklenecek statik site: ana sayfa + 1. bölüm + 2. bölüm.
+"""Netlify'a yüklenecek statik site: ana sayfa + 1. bölüm + 2. bölüm.
 
 Rakamlar ornek_sonuc/ altındaki sonuç dosyalarından okunur. Çıktı site/ klasörüne yazılır.
 Çalıştırma: python belgeler/site_uret.py [--site-url https://alan-adin.vercel.app]
@@ -405,6 +405,8 @@ def og(dosya: str, ust: str, baslik: str, buyuk: str, kucuk: str):
 SITE.mkdir(exist_ok=True)
 (SITE / "stil.css").write_text(CSS.strip() + "\n", encoding="utf-8")
 (SITE / "grafik.js").write_text(JS.strip() + "\n", encoding="utf-8")
+# Netlify: kısa adresler (/bolum-1) .html dosyalarına yönlenir.
+(SITE / "_redirects").write_text("/bolum-1  /bolum-1.html  200\n/bolum-2  /bolum-2.html  200\n", encoding="utf-8")
 ana_sayfa()
 bolum1()
 bolum2()

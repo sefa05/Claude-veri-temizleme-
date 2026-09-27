@@ -3,3 +3,4 @@ __pycache__/
 .pytest_cache/
 calisma/
 !ornek_sonuc/
+kirli-veri-deneyi-site.zip
