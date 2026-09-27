@@ -1,145 +1,127 @@
-# Kirli Veri Temizleme: Kural mı, LLM mi, Hibrit mi?
+# Kirli Veri Deneyi: Kurallar Ne Kadar Dayanıklı?
 
-Dağınık ve bozuk e-ticaret verisini üç farklı yöntemle temizleyip hangisinin gerçekten çalıştığını **ölçen** bir
-deney düzeneği. Veri sentetiktir. Üretici önce temiz veriyi oluşturur, sonra 15 farklı yolla bozar ve her bozmayı
-kaydeder. Temizleme sonucu bu gerçek doğruyla hücre hücre karşılaştırılır.
+Bilerek bozulmuş 10.000 siparişlik bir Türk e-ticaret veri setini LLM kullanmadan, sadece kurallarla temizleyen ve
+her düzeltmeyi hücre hücre **ölçen** bir deney. Veri sentetiktir: önce temiz hali üretildi ve saklandı, sonra 15
+farklı hata türüyle bozuldu. Temizleme sonucu bu temiz halle karşılaştırılır.
 
-| Yöntem | Nasıl çalışır |
-|---|---|
-| **Kural** | pandas + elle yazılmış kurallar + bulanık eşleştirme. LLM çağrısı yok |
-| **Sadece LLM** | Ham CSV satırları 20-25'lik gruplar halinde Claude'a gider, model temiz kaydı JSON şemasıyla döner |
-| **Hibrit** | Kurallar önce çalışır. Yalnızca kuralın çözemediği hücreler ve belirsiz müşteri çiftleri LLM'e gider. İl ve seçenekli sütunlarda model, referans listeden çekilen adaylar arasından seçer (RAG) |
+## Özet
 
-Her yöntem şu eksenlerde ölçülür: **doğruluk** (bozma türü başına), **uydurma** (kurtarılamaz ya da gerçekte boş
-bir hücreye değer yazma), **temiz hücreyi bozma**, **müşteri eşleştirme F1**, **maliyet** ve **süre**.
-
-## Kurulum
-
-```bash
-pip install -e ".[test]"
-export ANTHROPIC_API_KEY=...   # Sadece LLM ve hibrit yöntemler için
-```
-
-## Kullanım
-
-```bash
-veri-temizle deney                          # Üret + üç yöntemle temizle + ölç + rapor (calisma/rapor.html)
-veri-temizle deney --yontem kural           # API anahtarı olmadan sadece kural yöntemi
-veri-temizle maliyet                        # LLM yönteminin kaba maliyet tahmini (önce `uret` veya `deney`)
-veri-temizle deney --model claude-sonnet-5 --effort low --orneklem 500
-veri-temizle uret --satir 10000 --seed 42 --oran-carpani 1.5   # Daha sert bozma
-veri-temizle uret --seed 42 --surpriz       # 2. bölüm: kuralların görmediği hata biçimleri
-veri-temizle rapor                          # sonuclar.json'dan raporu yeniden üret
-veri-temizle gorsel                         # Paylaşım için tablo görseli (PNG, Chromium gerekir)
-veri-temizle puanla benim_ciktim/           # Kendi temizlediğin veriyi puanla
-```
-
-Varsayılan model `claude-opus-5`. Sadece LLM yöntemi tüm müşteri ve ürünleri, siparişlerden ise **1.000 satırlık
-sabit bir örneklemi** temizler (10 bin sipariş için yaklaşık $33, örneklem için yaklaşık $8 tahmin, düşünme tokenları
-hariç). Karşılaştırma tablosu üç yöntemi de aynı kapsamda ölçer. LLM cevapları `calisma/llm_onbellek/` altında
-saklanır: aynı deney ikinci kez ücretsiz ve birebir aynı sonuçla çalışır. İstekler, model bir isteği güvenlik
-gerekçesiyle reddederse sunucu tarafında uygun modele geçen `fallbacks: "default"` ayarıyla gönderilir. Kapatmak için
-`--geri-donus-yok` kullanılır.
-
-## Çıktılar
-
-```
-calisma/
-  veri/kirli/          musteriler.csv, urunler.csv, siparisler.csv   (temizleyicilerin gördüğü tek şey)
-  veri/gercek/         temiz veri, bozma_kaydi.csv, tekrar_eslesme.csv (yalnızca ölçümde kullanılır)
-  cikti/<yontem>/
-    temiz/             temiz CSV'ler, veri.xlsx, musteri_eslesme.csv
-    sorunlar.csv       hücre bazlı: ham değer, temiz değer, yapılan işlem
-    karantina.csv      okunamayan satırlar
-    hatalar.csv        gerçek doğruyla uyuşmayan hücreler
-  sonuclar.json
-  rapor.html           Türkçe karşılaştırma raporu
-```
-
-## Bozma kataloğu
-
-| # | Bozma | Örnek |
+| | 1. bölüm: bilinen hatalar | 2. bölüm: görmediği hatalar |
 |---|---|---|
-| B1 | Tekrarlanan müşteri | Aynı kişi yeni ID ile, ad-soyad yer değiştirmiş, farklı e-posta. Siparişlerinin bir kısmı yeni kayda bağlı |
-| B2 | Tekrarlanan sipariş satırı | Aynı satır 2-3 kez |
-| B3 | Karışık tarih | `05/03/2024`, `5 Mart 2024`, `20240305`, `05-Mar-2024`, ABD biçimi `03/05/2024` |
-| B4 | Bozuk Türkçe karakter | `Ä°stanbul`, `Ýstanbul`, `?stanbul` |
-| B5 | Eksik değer | boş, `NULL`, `-`, `yok`, `N/A`, `0000-00-00` |
-| B6 | Para ve oran formatı | `1.250,50 TL`, `₺1,250.50`, `%10`, `0,10` |
-| B7 | Geçersiz değer | 1850 doğumlu müşteri, 2038 tarihli sipariş, `adet = 9999`, teslimden önce sipariş |
-| B8 | Yazım tutarsızlığı | `İST`, `34`, `Ev&Yasam`, `TEX`, `Papara`, `Tamamlandı` |
-| B9 | Telefon formatı | `+90(532)1234567`, `532-123-4567` |
-| B10 | Bozuk e-posta | `ayse@@gmail.com`, `ayse@gmial.com`, `ayse@gmail,com` |
-| B11 | Boşluk ve görünmez karakter | sıfır genişlikli boşluk, bölünmez boşluk, sekme |
-| B12 | Tutarsız toplam | İndirim uygulanmamış ya da basamak kaymış toplam |
-| B13 | ID kayması | `M367`, `m-00367`, `#367` |
-| B14 | Bozuk satır | `;` ayraçlı satır, fazladan alan, iki satır yapışmış |
-| B15 | Karışık birim | `3 adet`, `üç`, `3,0` |
+| Soru | Kurallar kirli veriyi ne kadar temizler? | Aynı kurallar yeni hata biçimlerinde ne yapar? |
+| Doğru düzeltme | **%97,6** | **%68,9** |
+| Uydurma (bilinmeyen değere değer yazma) | 11 | 31 |
+| Bozuk satır kurtarma | %100 | %46,4 |
+| Kaybolan sipariş | 0 | 123 |
+| Rapor | [PDF](belgeler/kirli_veri_deneyi_bolum1.pdf) | [PDF](belgeler/kirli_veri_deneyi_bolum2.pdf) |
 
-## İlk sonuç: kural yöntemi (10.000 sipariş, seed 42)
+**Ana bulgular**
 
-Tüm sonuçlar tek dosyada: **[Kirli veri deneyi, 1. bölüm (PDF)](belgeler/kirli_veri_deneyi_bolum1.pdf)**
+1. Kurallar yazıldıkları hatalarda neredeyse kusursuz. Takıldıkları yerler sözlükte olmayan kısaltmalar (`TEX`,
+   `Papara`) ve gün/ay sırası belirsiz tarihler (`06/01/1967`).
+2. Kod değişmeden hata biçimleri değişince doğruluk %97,6'dan %68,9'a düştü. En sert düşüşler ID biçimi, e-posta ve
+   tarihlerde.
+3. Kırılma çoğunlukla sessiz: kurtarılabilir hücrelerin %28,3'ü hata ya da uyarı olmadan boş kaldı.
+4. Tek bir görünmez `\r` karakteri 72 siparişi kaybettirdi.
+5. Genel kurallar (önek eşleşmesi, sadece rakam ayıklama) dayandı, özel kurallar kırıldı.
 
-![Kural yönteminin bozma türüne göre sonuçları](gorseller/kural_tablosu.png)
-
-| Metrik | Sonuç |
-|---|---|
-| Kurtarılabilir bozuk hücrelerde doğru düzeltme | **%97,6** (19.271 hücre) |
-| Uydurma | 11 / 1.617 (%0,7) |
-| Temiz hücreyi bozma | %0 |
-| Müşteri eşleştirme F1 | 0,990 (159 çiftten 156'sı bulundu, yanlış eşleşme yok) |
-| Tekrar sipariş silme / bozuk satır kurtarma | %100 / %100 |
-| Süre | ~8 sn |
-
-Kuralın takıldığı yerler: sözlükte olmayan eş anlamlılar (`TEX`, `YK`, `Papara`, `Tamamlandı`: B8'de %89,5),
-gün/ay sırası belirsiz tarihler (`06/01/1967`) ve kanıtı zayıf müşteri çiftleri. LLM ve hibrit sonuçları API
-anahtarıyla `veri-temizle deney` çalıştırılınca rapora eklenir.
-
-![Kirli ve temiz örnekler](gorseller/kirli_temiz_ornekler.png)
-
-## 2. bölüm: aynı kurallar, görmediği hatalar
-
-Kural kodu `60d97ad` commit'indeki haliyle donduruldu. Aynı temiz veri, kuralların hiç görmediği yeni hata
-biçimleriyle yeniden bozuldu (`veri-temizle uret --surpriz`). Sonuç:
-
-| Metrik | Bilinen hatalar | Görmediği hatalar |
-|---|---|---|
-| Doğru düzeltme | %97,6 | **%68,9** |
-| Uydurma | 11 | **31** |
-| Bozuk satır kurtarma | %100 | **%46,4** |
-| Kaybolan sipariş | 0 | **123** |
-
-Kırılmanın çoğu sessiz: kurtarılabilir hücrelerin %28,3'ü boş kaldı. Tek bir görünmez `\r` karakteri 72 siparişi
-kaybettirdi. Ayrıntılar: **[Kirli veri deneyi, 2. bölüm (PDF)](belgeler/kirli_veri_deneyi_bolum2.pdf)**
+**Pratik sonuç:** Kural tabanlı bir veri hattında doğruluk kadar boş hücre oranını, karantinaya düşen satır sayısını ve
+satır sayısı farkını da izleyin.
 
 ![Bilinen ve görmediği hatalarda kural yöntemi](gorseller/bolum2_karsilastirma.png)
 
-## Veri seti: sen de dene
+## Sen de dene
 
-`veri_seti/` klasöründe kirli veri ve cevap anahtarı var. Kendi yönteminle temizle, `veri-temizle puanla
-benim_ciktim/` ile skorunu al. Ayrıntılar: [veri_seti/README.md](veri_seti/README.md).
+İki veri seti de açık. Kendi yönteminle (kural, LLM, ajan ya da elle) temizle ve tek komutla puanla:
+
+```bash
+pip install -e .
+veri-temizle puanla benim_ciktim/                                    # 1. bölüm: bilinen hatalar
+veri-temizle puanla benim_ciktim2/ --gercek veri_seti_surpriz/gercek # 2. bölüm: görmediği hatalar
+```
+
+Beklenen çıktı biçimi ve kurallar: [veri_seti/README.md](veri_seti/README.md) ·
+[veri_seti_surpriz/README.md](veri_seti_surpriz/README.md). Yöntemin iki sette de iyiyse gerçekten genelleşiyor
+demektir.
 
 ## Okurken bilinmesi gerekenler
 
-- **Kural yöntemi avantajlı başlıyor.** Bozma kataloğunu ve kuralları aynı kişi yazdı. Gerçek hayatta kural yazarı
-  hataların hepsini önceden görmez. Kural yöntemindeki eş anlamlı listesi kasıtlı olarak kısa tutuldu ve
-  `veri_temizleme/temizleme/sozluk.py` içinde açıkça görülebilir.
-- LLM ve hibrit yöntemlere bozma kataloğu gösterilmez. Üç yöntem de aynı iş kurallarını (veri çekim tarihi,
-  teslim süresi, toplam formülü) ve aynı referans listeleri (81 il, kategoriler, kargo firmaları) alır.
-- Müşteri tekrarlarında adaylar her yöntemde aynı şekilde ad-soyad ile gruplanır. Kararı kural yönteminde puanlama,
-  LLM yönteminde model verir.
-- Maliyet liste fiyatıyla token kullanımından hesaplanır.
+- **Hataları da kuralları da aynı kişi yazdı.** 1. bölümdeki %97,6 bu yüzden gerçek hayattakinden iyimser. 2. bölüm
+  bu yanlılığı ölçmek için yapıldı: kural kodu `60d97ad` commit'inde donduruldu ve hiç değiştirilmedi.
+- **2. bölüm bir stres testidir.** Yeni hata biçimlerini de aynı kişi seçti ve kural kodunu biliyordu. Yalnızca
+  gerçek değeri kirli metinden kesin olarak çıkarılabilen biçimler kullanıldı.
+- **Doğruluk** kurtarılabilir bozuk hücreler üzerinden hesaplanır. **Uydurma**, gerçeği bilinemeyen ya da gerçekte
+  boş olan bir hücreye değer yazmaktır.
+- Veri tamamen sentetiktir, gerçek kişilere ait değildir.
 
-## Proje yapısı
+## Deney nasıl kuruldu?
+
+**Veri:** 2.500 müşteri, 300 ürün, 10.000 sipariş. Türk ad-soyad listeleri, gerçek il ve ilçeler, kategoriye göre
+fiyat aralıkları, hafta sonu ve Kasım yoğunluğu, `toplam = adet × fiyat × (1 − indirim)` gibi iş kuralları.
+
+**Hata türleri:**
+
+| # | Hata | 1. bölüm örnekleri | 2. bölüm örnekleri |
+|---|---|---|---|
+| B1 | Tekrarlanan müşteri | Aynı kişi yeni ID ile, ad-soyad yer değiştirmiş | aynı |
+| B2 | Tekrarlanan sipariş | Aynı satır 2-3 kez | aynı |
+| B3 | Karışık tarih | `05/03/2024`, `5 Mart 2024`, `05-Mar-2024` | `27 Şubat 1987 Cuma`, Unix zamanı, Excel numarası |
+| B4 | Bozuk Türkçe karakter | `Ä°stanbul`, `Ýstanbul`, `?stanbul` | `Ya&#287;mur`, çift bozulma, `Ba_ak` |
+| B5 | Eksik değer | `NULL`, `-`, `yok`, `N/A` | `Belirtilmemiş`, `#N/A`, `(boş)` |
+| B6 | Para ve oran | `1.250,50 TL`, `₺1,250.50`, `%10` | `81 TL 62 kr`, `1 250,50 TL`, `yüzde 10` |
+| B7 | Geçersiz değer | 1850 doğumlu müşteri, 2038 tarihli sipariş | aynı |
+| B8 | Yazım tutarsızlığı | `İST`, `34`, `TEX`, `Papara` | `TY Express`, `Yurtici Krg`, `İstanbul/Sarıyer` |
+| B9 | Telefon | `+90(532)1234567` | `(0532) 1234567`, `0532... / cep` |
+| B10 | Bozuk e-posta | `ayse@@gmail.com`, `ayse@gmial.com` | `ayse[at]gmail.com`, `mailto:...` |
+| B11 | Görünmez karakter | sıfır genişlikli boşluk, sekme | `\r`, yumuşak tire, ince boşluk |
+| B12 | Tutarsız toplam | İndirimsiz ya da basamak kaymış toplam | aynı |
+| B13 | ID kayması | `M367`, `m-00367`, `#367` | `MUS-00211`, `0000834`, `M00367.0` |
+| B14 | Bozuk satır | `;` ayraç, fazladan alan, yapışık satır | sekme ya da `\|` ayraç, sonda fazladan virgül |
+| B15 | Karışık birim | `3 adet`, `üç`, `3,0` | `3 pcs`, `2 (iki)`, `bir tane` |
+
+**Kural yöntemi:** Satır onarımı, Türkçe karakter onarımı, tarih, para ve telefon çözümleyicileri, il ve kategori
+için bulanık eşleştirme, `toplam = adet × fiyat × (1 − indirim)` ile türetme ve müşteri tekrarı birleştirme. Kural
+güvenle çözemediği değeri tahmin etmez, boş bırakır.
+
+## Kurulum ve komutlar
+
+```bash
+pip install -e ".[test]"
+veri-temizle deney --yontem kural           # 1. bölümü baştan üret, temizle, ölç, rapor (calisma/rapor.html)
+veri-temizle uret --seed 42 --surpriz       # 2. bölümün verisini üret
+veri-temizle puanla <klasör>                # Temiz bir çıktıyı gerçek doğruyla puanla
+veri-temizle gorsel                         # Paylaşım görseli (PNG, Chromium gerekir)
+python belgeler/pdf_uret.py                 # 1. bölüm PDF'i
+python belgeler/bolum2_uret.py              # 2. bölüm görselleri ve PDF'i
+python -m pytest                            # Testler
+```
+
+Tüm rakamlar `ornek_sonuc/` altındaki sonuç dosyalarından okunur. Aynı seed her seferinde birebir aynı veriyi üretir.
+
+## Dosyalar
 
 ```
+belgeler/             1. ve 2. bölüm PDF'leri ve bunları üreten betikler
+gorseller/            X için paylaşım görselleri
+veri_seti/            1. bölüm: kirli veri + cevap anahtarı
+veri_seti_surpriz/    2. bölüm: kirli veri + cevap anahtarı
+ornek_sonuc/          Kural yönteminin ölçüm sonuçları ve HTML raporları
 veri_temizleme/
-  referans.py            iller, ilçeler, adlar, kategoriler, tablo şemaları
-  metin.py               Türkçe büyük/küçük harf, mojibake onarımı
-  uretici/               temiz.py (gerçek doğru), bozma.py (B1-B15 + kayıt)
-  temizleme/             okuma.py (satır onarımı), cozumleyiciler.py, sozluk.py, kural.py
-  llm/                   istemci.py (önbellek + maliyet), yontem.py (sadece LLM), hibrit.py
-  olcum.py               gerçek doğruyla karşılaştırma
-  deney.py, rapor.py, cli.py
-tests/                   pytest (LLM testleri sahte istemciyle, API çağrısı yapmaz)
+  uretici/            temiz veri, bozma motoru (B1-B15), sürpriz biçimler
+  temizleme/          kural yöntemi (2. bölümde dondurulmuş)
+  olcum.py            gerçek doğruyla hücre bazlı ölçüm
+  llm/                LLM ve hibrit yöntemler (hazır, çalıştırılmadı)
+  cli.py, deney.py, rapor.py, gorsel.py
+tests/
 ```
+
+## Ek: LLM ve hibrit yöntemler
+
+Kodda iki yöntem daha hazır ama **API anahtarı olmadığı için çalıştırılmadı**, bu yüzden sonuç yok:
+- **Sadece LLM:** Ham CSV satırları gruplar halinde Claude'a gider, model temiz kaydı JSON şemasıyla döner.
+- **Hibrit:** Kural önce çalışır, çözemediği hücreler LLM'e sorulur. İl ve seçenekli sütunlarda model referans
+  listeden çekilen adaylar arasından seçer.
+
+`ANTHROPIC_API_KEY` tanımlıyken `veri-temizle deney` üç yöntemi aynı veride karşılaştırır. `veri-temizle maliyet`
+çalıştırmadan önce kaba maliyet tahmini verir. Varsayılan modelle, 1.000 siparişlik örneklem için yaklaşık $8 (düşünme
+tokenları hariç).

@@ -1,3 +1,6 @@
+> **Not:** Bu, projenin başlangıç planıdır. API anahtarı olmadığı için LLM karşılaştırması yapılmadı ve deney iki
+> bölüm halinde kural yönteminin dayanıklılığına odaklandı. Güncel durum ve sonuçlar için [README](README.md).
+
 # Veri Temizleme Projesi: Kural mı, LLM mi, Hibrit mi?
 
 Dağınık, bozuk ve işe yaramaz haldeki e-ticaret verisini **üç farklı yöntemle** temizleyip hangisinin gerçekten
