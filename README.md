@@ -30,6 +30,18 @@ satır sayısı farkını da izleyin.
 
 ![Bilinen ve görmediği hatalarda kural yöntemi](gorseller/bolum2_karsilastirma.png)
 
+## Web sitesi
+
+İki bölüm `site/` klasöründe statik bir site olarak da var: ana sayfa, `/bolum-1` ve `/bolum-2`. Grafikler sayfada
+HTML olarak çizilir, mobilde ve karanlık modda çalışır. X'te paylaşılınca görselli önizleme kartı çıkar.
+
+Vercel'e yüklemek için repoyu Vercel'de içe aktarmak yeterli. `vercel.json` çıktı klasörünü (`site`) ve kısa
+adresleri ayarlar, derleme adımı yoktur. Siteyi yeniden üretmek için:
+
+```bash
+python belgeler/site_uret.py --site-url https://alan-adin.vercel.app
+```
+
 ## Sen de dene
 
 İki veri seti de açık. Kendi yönteminle (kural, LLM, ajan ya da elle) temizle ve tek komutla puanla:
@@ -101,7 +113,8 @@ Tüm rakamlar `ornek_sonuc/` altındaki sonuç dosyalarından okunur. Aynı seed
 ## Dosyalar
 
 ```
-belgeler/             1. ve 2. bölüm PDF'leri ve bunları üreten betikler
+belgeler/             1. ve 2. bölüm PDF'leri, site ve bunları üreten betikler
+site/                 Vercel'e yüklenen statik site (üretilmiş dosyalar)
 gorseller/            X için paylaşım görselleri
 veri_seti/            1. bölüm: kirli veri + cevap anahtarı
 veri_seti_surpriz/    2. bölüm: kirli veri + cevap anahtarı
