@@ -1,7 +1,7 @@
 """Netlify'a yüklenecek statik site: ana sayfa + 1. bölüm + 2. bölüm.
 
 Rakamlar ornek_sonuc/ altındaki sonuç dosyalarından okunur. Çıktı site/ klasörüne yazılır.
-Çalıştırma: python belgeler/site_uret.py [--site-url https://alan-adin.vercel.app]
+Çalıştırma: python belgeler/site_uret.py [--site-url https://alan-adin.netlify.app]
 """
 
 import argparse
@@ -21,7 +21,7 @@ DONDURULAN_COMMIT = "60d97ad"
 
 p = argparse.ArgumentParser()
 p.add_argument("--site-url", default="https://raw.githubusercontent.com/sefa05/Claude-veri-temizleme-/"
-               "claude/selam-2d3yw9/site", help="Önizleme görselleri için mutlak adres (Vercel alan adı)")
+               "claude/selam-2d3yw9/site", help="Önizleme görselleri için mutlak adres (Netlify alan adı)")
 SITE_URL = p.parse_args().site_url.rstrip("/")
 
 b1 = json.loads((KOK / "ornek_sonuc" / "sonuclar.json").read_text(encoding="utf-8"))["yontemler"]["kural"]
