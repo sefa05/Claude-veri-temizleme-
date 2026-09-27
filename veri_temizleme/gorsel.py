@@ -93,11 +93,16 @@ def tablo_html(sonuclar: dict, baslik: str | None = None) -> str:
             "<span>github.com/sefa05/Claude-veri-temizleme-</span></div></body></html>")
 
 
-def ekran_goruntusu(html_metni: str, cikti: Path, genislik: int = 1200) -> Path:
+def tarayici_bul() -> str:
     tarayici = shutil.which("chromium") or shutil.which("google-chrome") or next(
         (str(p) for p in Path("/opt/pw-browsers").glob("chromium-*/chrome-linux/chrome")), None)
     if not tarayici:
         raise RuntimeError("Chromium bulunamadı")
+    return tarayici
+
+
+def ekran_goruntusu(html_metni: str, cikti: Path, genislik: int = 1200) -> Path:
+    tarayici = tarayici_bul()
     with tempfile.TemporaryDirectory() as gecici:
         sayfa = Path(gecici) / "sayfa.html"
         sayfa.write_text(html_metni, encoding="utf-8")

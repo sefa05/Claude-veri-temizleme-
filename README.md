@@ -77,6 +77,8 @@ calisma/
 
 ## İlk sonuç: kural yöntemi (10.000 sipariş, seed 42)
 
+Tüm sonuçlar tek dosyada: **[Kirli veri deneyi, 1. bölüm (PDF)](belgeler/kirli_veri_deneyi_bolum1.pdf)**
+
 ![Kural yönteminin bozma türüne göre sonuçları](gorseller/kural_tablosu.png)
 
 | Metrik | Sonuç |
