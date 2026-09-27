@@ -1,0 +1,19 @@
+[project]
+name = "veri-temizleme"
+version = "0.1.0"
+description = "Kirli e-ticaret verisini kural, LLM ve hibrit yöntemlerle temizleyip ölçen deney düzeneği"
+requires-python = ">=3.10"
+dependencies = ["pandas>=2.2", "openpyxl>=3.1", "rapidfuzz>=3.6", "anthropic>=1.8"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+veri-temizle = "veri_temizleme.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["veri_temizleme*"]

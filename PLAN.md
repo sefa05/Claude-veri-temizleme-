@@ -1,7 +1,30 @@
-# Veri Temizleme Projesi: Kirli E-Ticaret Verisinden Temiz Çıktıya
+# Veri Temizleme Projesi: Kural mı, LLM mi, Hibrit mi?
 
-Dağınık, bozuk ve işe yaramaz haldeki e-ticaret verisini adım adım temizleyip analize hazır bir çıktıya dönüştüren
-bir Python projesi. Veriyi kendimiz **sentetik** olarak üretiriz. Üretici önce temiz veriyi (gerçek doğru) oluşturur,
+Dağınık, bozuk ve işe yaramaz haldeki e-ticaret verisini **üç farklı yöntemle** temizleyip hangisinin gerçekten
+çalıştığını ölçen bir Python projesi. Amaç X için ölçüme dayalı içerik üretmek: "LLM'e 10 bin kirli satır verdim,
+şurada iyi, şurada uydurdu, maliyeti şu."
+
+## Karşılaştırılan yöntemler
+
+| Yöntem | Nasıl çalışır |
+|---|---|
+| **Kural** | Sadece pandas ve elle yazılmış kurallar. Referans nokta. LLM çağrısı yok |
+| **LLM** | Satırlar küçük gruplar halinde Claude'a gider, model temiz satırı JSON şemasıyla döner. Bozma kataloğu modele gösterilmez |
+| **Hibrit** | Kurallar önce çalışır. Kuralın güvenle çözemediği hücreler (belirsiz tarih, eşleşmeyen il/kategori, şüpheli müşteri tekrarı) LLM'e gider. İl ve kategori için model, referans listeden çekilen adaylar arasından seçim yapar (RAG) |
+
+Her yöntem aynı gerçek doğruyla şu dört eksende ölçülür:
+
+| Metrik | Anlamı |
+|---|---|
+| Doğruluk | Bozuk hücrelerin yüzde kaçı gerçek değerine döndü (bozma türü başına) |
+| Uydurma | Gerçekte boş/kurtarılamaz olan veya bozulmamış bir hücreye yanlış ama emin görünen değer yazılması |
+| Maliyet | Token kullanımından hesaplanan $ |
+| Süre | Duvar saati süresi |
+
+LLM yöntemi 10 bin satırın tamamında pahalı olacağı için varsayılan olarak **1.000 satırlık sabit bir örneklem**
+üzerinde çalışır. Kural ve hibrit yöntemleri tüm veride çalışır, ama karşılaştırma tablosu aynı örneklemde de verilir.
+
+Bu bir Python projesidir. Veriyi kendimiz **sentetik** olarak üretiriz. Üretici önce temiz veriyi (gerçek doğru) oluşturur,
 sonra bilerek bozar. Temizleme hattının başarısı, temiz sonucun bu gerçek doğruyla karşılaştırılmasıyla **sayısal
 olarak** ölçülür.
 
@@ -12,8 +35,8 @@ olarak** ölçülür.
 | Senaryo | Türk bir e-ticaret sitesinin müşteri, ürün ve sipariş kayıtları |
 | Ölçek | **10.000 sipariş satırı** (ek olarak ~2.500 müşteri, ~300 ürün) |
 | Dil | Türkçe: veri, sütun adları, rapor ve CLI mesajları |
-| Teknoloji | Python 3.11, pandas, pytest |
-| Arayüz | Komut satırı (CLI) + tek dosyalık HTML temizlik raporu (sonra değiştirilebilir) |
+| Teknoloji | Python 3.11, pandas, rapidfuzz, Anthropic SDK, pytest |
+| Arayüz | Komut satırı (CLI) + tek dosyalık HTML karşılaştırma raporu |
 | Tekrarlanabilirlik | Sabit `seed`. Aynı seed her seferinde birebir aynı kirli veriyi üretir |
 
 ## Genel akış
@@ -43,7 +66,7 @@ aralıkları, hafta sonu ve Kasım (indirim dönemi) yoğunluğu, `teslim_tarihi
 
 ### Bozma kataloğu
 
-Her bozma türünün bir **oranı** vardır (ör. `%8`) ve oranlar tek bir ayar dosyasından (`config.yaml`) değiştirilebilir.
+Her bozma türünün bir **oranı** vardır (ör. `%8`) ve oranlar `uretici/bozma.py` içinde tanımlıdır. `--oran-carpani` hepsini birlikte ölçekler.
 Üretici hangi hücreye ne yaptığını `bozma_kaydi.csv` dosyasına yazar. Bu dosya ölçümde kullanılır.
 
 | # | Bozma | Örnek |
@@ -100,43 +123,37 @@ cikti/
 - **Doğruluk skoru:** gerçek doğruyla karşılaştırma. Bozma türü başına yakalama ve doğru düzeltme oranı
   (ör. "B3 tarih: 1.214 bozuk hücrenin %99,2'si doğru düzeltildi")
 
-## 4. Kullanım (hedef)
+## 4. Kullanım
 
 ```bash
 pip install -e .
-veri-temizle uret --satir 10000 --seed 42          # veri/kirli/ ve veri/gercek/ oluşur
-veri-temizle temizle veri/kirli/ --cikti cikti/    # temizleme hattı
-veri-temizle olc cikti/temiz/ veri/gercek/         # doğruluk skoru
-veri-temizle hepsi --seed 42                       # üçü birden
+veri-temizle deney                  # üret + kural/hibrit/LLM ile temizle + ölç + rapor
+veri-temizle deney --yontem kural   # API anahtarı olmadan
+veri-temizle maliyet                # LLM yönteminin kaba maliyet tahmini
 ```
 
 ## 5. Proje yapısı
 
-```
-veri_temizleme/
-  uretici/     temiz.py, bozma.py, referans/ (iller, ilçeler, adlar, kategoriler)
-  temizleme/   okuma.py, onarim.py, standart.py, sozluk.py, dogrulama.py, tekrar.py, cikti.py
-  olcum.py
-  rapor/       sablon.html
-  cli.py
-tests/
-config.yaml
-```
+Güncel yapı için README'ye bakın.
 
 ## 6. Aşamalar
 
-| Aşama | İçerik | Bitti sayılır |
+| Aşama | İçerik | Durum |
 |---|---|---|
-| 1 | Proje iskeleti, referans listeler, temiz veri üretici | 10.000 geçerli sipariş, tüm iş kuralları sağlanıyor |
-| 2 | Bozma motoru ve `bozma_kaydi.csv` | B1–B15 ayarlanan oranlarda uygulanıyor |
-| 3 | Temizleme hattı adım 1–4 | Her modülün birim testi var |
-| 4 | Temizleme hattı adım 5–7 | Temiz CSV/Excel, karantina ve sorunlar dosyası üretiliyor |
-| 5 | Ölçüm ve HTML rapor | Bozma türü başına doğruluk skoru |
-| 6 | CLI, README, uçtan uca test | `veri-temizle hepsi` tek komutla çalışıyor |
+| 1 | Proje iskeleti, referans listeler, temiz veri üretici | Tamam |
+| 2 | Bozma motoru ve `bozma_kaydi.csv` | Tamam |
+| 3 | Kural hattı: okuma, onarım, standartlaştırma, sözlük | Tamam |
+| 4 | Kural hattı: türetme, doğrulama, tekrar birleştirme, çıktı | Tamam |
+| 5 | Ölçüm ve HTML rapor | Tamam |
+| 6 | CLI, README, testler | Tamam |
+| 7 | Sadece LLM ve hibrit yöntemler (sahte istemciyle test edildi) | Kod hazır, gerçek çalıştırma API anahtarı bekliyor |
+| 8 | Gerçek karşılaştırma ve X serisi için grafikler | Bekliyor |
 
-**Başarı hedefi:** Genel doğru düzeltme oranı **≥ %95**. Temizlenen veride tekrar ve referans hatası kalmaması.
+**Başarı hedefi:** Genel doğru düzeltme oranı **≥ %95**. Kural yöntemi tüm veride %97,7'ye ulaştı.
 
 ## Açık sorular
 
-- Rapor HTML dışında bir dashboard veya web arayüzü olarak da istenir mi?
-- Bozma oranları ne kadar sert olsun? Varsayılan: hücrelerin yaklaşık %5–10'u bozuk.
+- Hangi model(ler) karşılaştırılacak? Varsayılan `claude-opus-5`. Aynı deney `--model` ile ucuz bir modelde de
+  çalıştırılabilir.
+- Kural yöntemi, aynı kişinin hem bozma hem kural yazmasından dolayı avantajlı. Kural yazarının görmediği bir
+  "sürpriz bozma" seti eklemek bu yanlılığı ölçmenin yolu olabilir.
