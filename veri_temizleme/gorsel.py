@@ -49,7 +49,10 @@ def _sayi(n: int) -> str:
     return f"{n:,}".replace(",", ".")
 
 
-def tablo_html(sonuclar: dict, baslik: str | None = None) -> str:
+def tablo_html(sonuclar: dict, baslik: str | None = None, etiketler: dict[str, str] | None = None,
+               kutular: list[tuple[str, str]] | None = None, alt_baslik: str | None = None) -> str:
+    """Bozma türü tablosu. `etiketler` sütun başlıklarını, `kutular` alttaki özet rakamları değiştirir."""
+    etiketler = {**YONTEM_ADLARI, **(etiketler or {})}
     calisan = {y: v for y, v in sonuclar["yontemler"].items() if "atlandi" not in v}
     kapsam = "tam" if all(v.get("tam") for v in calisan.values()) else "orneklem"
     turler = {}
@@ -62,7 +65,7 @@ def tablo_html(sonuclar: dict, baslik: str | None = None) -> str:
     sirali = sorted(turler, key=lambda b: (min(turler[b][id(v)] for v in calisan.values()), -turler[b]["n"]))
     kolon = f"minmax(0,1.25fr) 90px {' '.join(['minmax(0,1fr)'] * len(calisan))}"
     satirlar = [f"<div class='satir baslik' style='grid-template-columns:{kolon}'><div>Hata türü</div>"
-                f"<div class='n'>Hücre</div>" + "".join(f"<div>{YONTEM_ADLARI[y]}</div>" for y in calisan) + "</div>"]
+                f"<div class='n'>Hücre</div>" + "".join(f"<div>{html.escape(etiketler[y])}</div>" for y in calisan) + "</div>"]
     for b in sirali:
         cubuklar = ""
         for v in calisan.values():
@@ -73,8 +76,11 @@ def tablo_html(sonuclar: dict, baslik: str | None = None) -> str:
                         f"{html.escape(KISA_ADLAR[b])}<span class='kod'>{b}</span></div>"
                         f"<div class='n'>{_sayi(turler[b]['n'])}</div>{cubuklar}</div>")
     ilk = next(iter(calisan.values()))[kapsam]
-    kutular = ""
-    if len(calisan) == 1:
+    if kutular is not None:
+        kutular = "<div class='alt-bilgi'>" + "".join(
+            f"<div class='kutu'><div class='d'>{html.escape(d)}</div><div class='e'>{html.escape(e)}</div></div>"
+            for d, e in kutular) + "</div>"
+    elif len(calisan) == 1:
         v = next(iter(calisan.values()))
         llm = v.get("llm") or {}
         kutular = "<div class='alt-bilgi'>" + "".join(
@@ -83,12 +89,14 @@ def tablo_html(sonuclar: dict, baslik: str | None = None) -> str:
                 (_yuzde(ilk["uydurma"]["oran"]), "uydurma"),
                 (f"{v['sure']:.0f} sn", "süre"),
                 (f"${llm.get('maliyet', 0):.0f}", "maliyet")]) + "</div>"
+    else:
+        kutular = ""
     satir_sayisi = ilk["satirlar"]["siparisler"]["gercek_satir"]
     baslik = baslik or ("LLM olmadan, sadece kurallarla: hangi hata ne kadar düzeldi?" if len(calisan) == 1
                         else "Kirli veri temizleme: kural, LLM ve hibrit")
     return (f"<!doctype html><html lang='tr'><head><meta charset='utf-8'><style>{CSS}</style></head><body>"
             f"{FONT}<h1>{html.escape(baslik)}</h1><p class='alt'>{_sayi(satir_sayisi)} sipariş" +
-            " · 15 bozma türü · doğru düzeltilen bozuk hücre oranı</p>" + "".join(satirlar) + kutular +
+            f" · {html.escape(alt_baslik or '15 bozma türü · doğru düzeltilen bozuk hücre oranı')}</p>" + "".join(satirlar) + kutular +
             "<div class='kaynak'><span>Sentetik veri, seed 42</span>"
             "<span>github.com/sefa05/Claude-veri-temizleme-</span></div></body></html>")
 

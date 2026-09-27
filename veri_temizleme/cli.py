@@ -21,6 +21,7 @@ def main(argv: list[str] | None = None) -> int:
     u.add_argument("--urun", default=300, type=int)
     u.add_argument("--seed", default=42, type=int)
     u.add_argument("--oran-carpani", default=1.0, type=float, help="Tüm bozma oranlarını çarpar")
+    u.add_argument("--surpriz", action="store_true", help="2. bölümün kuralların görmediği hata biçimleri")
 
     for ad, yardim in (("deney", "Üretir, üç yöntemle temizler, ölçer ve raporlar"),
                        ("temizle", "Tek bir yöntemle temizler ve ölçer")):
@@ -57,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
     a = p.parse_args(argv)
     if a.komut == "uret":
         from .uretici import uret
-        print(json.dumps(uret(a.klasor / "veri", a.seed, a.satir, a.musteri, a.urun, a.oran_carpani)))
+        print(json.dumps(uret(a.klasor / "veri", a.seed, a.satir, a.musteri, a.urun, a.oran_carpani, a.surpriz)))
         return 0
     if a.komut in ("deney", "temizle"):
         from .deney import deney

@@ -35,3 +35,13 @@ def test_bozma_kaydi_kirli_veriyle_tutarli():
         assert siparis.at[r.anahtar, r.sutun] == r.bozuk
     assert set(sonuc.kayit.bozma) >= {"B1", "B2", "B3", "B5", "B6", "B8", "B14"}
     assert (~sonuc.kayit.kurtarilabilir).any()
+
+
+def test_surpriz_bozmalar_standart_veriyi_etkilemez():
+    temiz = temiz_veri_uret(11, 500, 120, 30)
+    standart = boz(temiz, 11)
+    assert boz(temiz, 11).csv_metinleri == standart.csv_metinleri
+    surpriz = boz(temiz, 11, surpriz=True)
+    assert surpriz.csv_metinleri != standart.csv_metinleri
+    assert surpriz.csv_metinleri == boz(temiz, 11, surpriz=True).csv_metinleri
+    assert set(surpriz.kayit.bozma) >= {"B3", "B6", "B8", "B14"}

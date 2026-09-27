@@ -147,7 +147,8 @@ Güncel yapı için README'ye bakın.
 | 5 | Ölçüm ve HTML rapor | Tamam |
 | 6 | CLI, README, testler | Tamam |
 | 7 | Sadece LLM ve hibrit yöntemler (sahte istemciyle test edildi) | Kod hazır, gerçek çalıştırma API anahtarı bekliyor |
-| 8 | Gerçek karşılaştırma ve X serisi için grafikler | Bekliyor |
+| 8 | 1. bölüm: kural sonuçları, görseller, açık veri seti, PDF | Tamam |
+| 9 | 2. bölüm: dondurulmuş kurallar + sürpriz hata biçimleri (API gerektirmez) | Tamam: %97,6 → %68,9 |
 
 **Başarı hedefi:** Genel doğru düzeltme oranı **≥ %95**. Kural yöntemi tüm veride %97,7'ye ulaştı.
 
@@ -155,5 +156,5 @@ Güncel yapı için README'ye bakın.
 
 - Hangi model(ler) karşılaştırılacak? Varsayılan `claude-opus-5`. Aynı deney `--model` ile ucuz bir modelde de
   çalıştırılabilir.
-- Kural yöntemi, aynı kişinin hem bozma hem kural yazmasından dolayı avantajlı. Kural yazarının görmediği bir
-  "sürpriz bozma" seti eklemek bu yanlılığı ölçmenin yolu olabilir.
+- Kural yöntemi, aynı kişinin hem bozma hem kural yazmasından dolayı avantajlı. 2. bölümdeki sürpriz bozma seti
+  bu yanlılığı ölçtü. LLM ve hibrit karşılaştırması API anahtarı olursa yapılabilir.

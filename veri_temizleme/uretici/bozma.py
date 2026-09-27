@@ -237,8 +237,23 @@ def es_anlamli(rng: random.Random, sutun: str, v: str) -> str:
     return _harf_varyanti(rng, v)
 
 
-def hucre_boz(rng: random.Random, tablo: str, sutun: str, bozma: str, v, satir: dict):
-    """Bir hücreyi bozar. Uygulanamıyorsa None döner."""
+def hucre_boz(rng: random.Random, tablo: str, sutun: str, bozma: str, v, satir: dict, surpriz: bool = False):
+    """Bir hücreyi bozar. Uygulanamıyorsa None döner. `surpriz` 2. bölümün yeni hata biçimlerini kullanır."""
+    if surpriz:
+        from . import surpriz as S
+        if bozma in S.HUCRE:
+            if bozma == "B3" and not v:
+                return None
+            s = S.HUCRE[bozma](rng, v)
+            return s if s != v else None
+        if bozma == "B5":
+            return rng.choice(S.YER_TUTUCULAR)
+        if bozma == "B6":
+            return S.oran(rng, v) if sutun == "indirim_orani" else S.para(rng, v)
+        if bozma == "B8":
+            return S.es_anlamli(rng, sutun, v)
+        if bozma == "B15":
+            return S.adet(rng, v)
     if bozma == "B3":
         return tarih_formatla(rng, v) if v else None
     if bozma == "B4":
@@ -334,7 +349,7 @@ def csv_yaz(df: pd.DataFrame) -> str:
     return buf.getvalue()
 
 
-def _satir_boz(rng: random.Random, metin: str, oran: float, kayitlar: list[dict]) -> str:
+def _satir_boz(rng: random.Random, metin: str, oran: float, kayitlar: list[dict], surpriz: bool = False) -> str:
     satirlar = metin.rstrip("\n").split("\n")
     baslik, govde = satirlar[0], satirlar[1:]
     sonuc = [baslik]
@@ -347,6 +362,14 @@ def _satir_boz(rng: random.Random, metin: str, oran: float, kayitlar: list[dict]
             continue
         alanlar = next(csv.reader([satir]))
         tur = rng.randrange(3)
+        if surpriz:
+            from .surpriz import satir_boz
+            yeni = satir_boz(rng, satir, len(alanlar))
+            kayitlar.append({"tablo": "siparisler", "anahtar": alanlar[0], "sutun": "*satir*", "bozma": "B14",
+                             "gercek": "", "bozuk": yeni, "kurtarilabilir": True})
+            sonuc.append(yeni)
+            i += 1
+            continue
         if tur == 0:
             yeni = ";".join(alanlar)
         elif tur == 1:
@@ -369,7 +392,7 @@ def _satir_boz(rng: random.Random, metin: str, oran: float, kayitlar: list[dict]
 
 def boz(temiz: dict[str, pd.DataFrame], seed: int, oran_carpani: float = 1.0,
         oranlar: list[tuple[str, str, str, float]] | None = None,
-        satir_oranlari: dict[str, float] | None = None) -> Sonuc:
+        satir_oranlari: dict[str, float] | None = None, surpriz: bool = False) -> Sonuc:
     rng = random.Random(seed + 1)
     oranlar = oranlar or VARSAYILAN_ORANLAR
     satir_oranlari = {**SATIR_ORANLARI, **(satir_oranlari or {})}
@@ -414,7 +437,7 @@ def boz(temiz: dict[str, pd.DataFrame], seed: int, oran_carpani: float = 1.0,
             if (tablo, i, sutun) in bozulan or rng.random() >= oran * oran_carpani:
                 continue
             gercek = ham[tablo][i][sutun]
-            yeni = hucre_boz(rng, tablo, sutun, bozma, gercek, ham[tablo][i])
+            yeni = hucre_boz(rng, tablo, sutun, bozma, gercek, ham[tablo][i], surpriz)
             if yeni is None or yeni == satir[sutun]:
                 continue
             satir[sutun] = yeni
@@ -438,7 +461,7 @@ def boz(temiz: dict[str, pd.DataFrame], seed: int, oran_carpani: float = 1.0,
                 "siparisler": pd.DataFrame(siparisler)}
     metinler = {t: csv_yaz(df) for t, df in tablolar.items()}
     metinler["siparisler"] = _satir_boz(rng, metinler["siparisler"], satir_oranlari["B14"] * oran_carpani,
-                                        kayitlar)
+                                        kayitlar, surpriz)
     kayit = pd.DataFrame(kayitlar, columns=["tablo", "anahtar", "sutun", "bozma", "gercek", "bozuk",
                                             "kurtarilabilir"])
     return Sonuc(tablolar, metinler, kayit, pd.DataFrame(eslesme, columns=["tekrar_id", "asil_id"]))

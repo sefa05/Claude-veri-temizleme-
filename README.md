@@ -28,6 +28,7 @@ veri-temizle deney --yontem kural           # API anahtarı olmadan sadece kural
 veri-temizle maliyet                        # LLM yönteminin kaba maliyet tahmini (önce `uret` veya `deney`)
 veri-temizle deney --model claude-sonnet-5 --effort low --orneklem 500
 veri-temizle uret --satir 10000 --seed 42 --oran-carpani 1.5   # Daha sert bozma
+veri-temizle uret --seed 42 --surpriz       # 2. bölüm: kuralların görmediği hata biçimleri
 veri-temizle rapor                          # sonuclar.json'dan raporu yeniden üret
 veri-temizle gorsel                         # Paylaşım için tablo görseli (PNG, Chromium gerekir)
 veri-temizle puanla benim_ciktim/           # Kendi temizlediğin veriyi puanla
@@ -95,6 +96,23 @@ gün/ay sırası belirsiz tarihler (`06/01/1967`) ve kanıtı zayıf müşteri �
 anahtarıyla `veri-temizle deney` çalıştırılınca rapora eklenir.
 
 ![Kirli ve temiz örnekler](gorseller/kirli_temiz_ornekler.png)
+
+## 2. bölüm: aynı kurallar, görmediği hatalar
+
+Kural kodu `60d97ad` commit'indeki haliyle donduruldu. Aynı temiz veri, kuralların hiç görmediği yeni hata
+biçimleriyle yeniden bozuldu (`veri-temizle uret --surpriz`). Sonuç:
+
+| Metrik | Bilinen hatalar | Görmediği hatalar |
+|---|---|---|
+| Doğru düzeltme | %97,6 | **%68,9** |
+| Uydurma | 11 | **31** |
+| Bozuk satır kurtarma | %100 | **%46,4** |
+| Kaybolan sipariş | 0 | **123** |
+
+Kırılmanın çoğu sessiz: kurtarılabilir hücrelerin %28,3'ü boş kaldı. Tek bir görünmez `\r` karakteri 72 siparişi
+kaybettirdi. Ayrıntılar: **[Kirli veri deneyi, 2. bölüm (PDF)](belgeler/kirli_veri_deneyi_bolum2.pdf)**
+
+![Bilinen ve görmediği hatalarda kural yöntemi](gorseller/bolum2_karsilastirma.png)
 
 ## Veri seti: sen de dene
 
