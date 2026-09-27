@@ -20,8 +20,8 @@ REPO = "https://github.com/sefa05/Claude-veri-temizleme-"
 DONDURULAN_COMMIT = "60d97ad"
 
 p = argparse.ArgumentParser()
-p.add_argument("--site-url", default="https://raw.githubusercontent.com/sefa05/Claude-veri-temizleme-/"
-               "claude/selam-2d3yw9/site", help="Önizleme görselleri için mutlak adres (Netlify alan adı)")
+p.add_argument("--site-url", default="https://veritemizleme.netlify.app",
+               help="Önizleme görselleri için mutlak adres (Netlify alan adı)")
 SITE_URL = p.parse_args().site_url.rstrip("/")
 
 b1 = json.loads((KOK / "ornek_sonuc" / "sonuclar.json").read_text(encoding="utf-8"))["yontemler"]["kural"]
